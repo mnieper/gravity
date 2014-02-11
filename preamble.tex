@@ -1,0 +1,24 @@
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{prettyref}
+
+\DeclareMathOperator{\Div}{div}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\set}[1]{\mathbf{#1}}
+\newcommand{\id}{\mathrm{id}}
+\DeclarePairedDelimiter{\Enum}{\lbrace}{\rbrace}
+\DeclarePairedDelimiter{\norm}{\|}{\|}
+\DeclarePairedDelimiter{\Set}{\lbrace}{\rbrace}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}{Lemma}[chapter]
+\newtheorem{cor}{Corollary}[chapter]
+\newtheorem{prop}{Proposition}[chapter]
+\theoremstyle{definition}
+\newtheorem{dfn}{Definition}[chapter]
+\newtheorem{xca}{Problem}[chapter]
+
+\newrefformat{prop}{Proposition \ref{#1}}
