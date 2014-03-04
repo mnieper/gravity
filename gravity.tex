@@ -1,7 +1,5 @@
 \documentclass{report}
 
-\includeonly{preface,history,notations,spacetime,topology,analysis}
-
 \input{preamble}
 
 \title{General Relativity and Einstein--Cartan Theory}
@@ -19,11 +17,88 @@
 	\tableofcontents
   
   \include{spacetime}
+  % Introduction
+  % Manifolds
+  % Functions on a manifold
+  % Morphisms
+  % Vectors (-> Beobachter)
+  % Tensors, push forward
+  % Vector fields (-> Lie bracket, flow)
+  % Tensor fields
+  
+  \include{motions} % Equations of motions
+  % Introduction
+  % Affine manifolds, connection coefficients
+  % Constant tensor fields & parallel displacement
+  % Second derivative & torsion
+  % Autoparallel
+  % Exponential map, normal coordinates
+  
+  \include{forces} % Tidal forces
+  % Introduction
+  % Riemann curvature
+  % Jacobi fields
+  % Bianchi identities
+  % Exponential map
+  
+  \include{vacuum} % 
+  % Introduction
+  % Riemannian and Pseudo-riemannian manifolds
+  % Levi-Civita connection
+  % Geodesics
+  % Riemannian curvature
+  % Interpretation of Riemannian curvature 
+  % Interpretation of scalar curvature
+  % Interpretation of Ricci curvature in Lorentzian manifolds
+  
+  \include{relativity} % General relativity
+  % Introduction
+  % Einstein tensor
+  % Mass density
+  % Einstein's field equations
+  % Newton's theory of gravity
+  % Equations of motion
+  % Killing vector fields
+  % Schwarzschild metric
+  % Schwarzschild potential
+  
   \include{maxwell}
+  % Introduction
+  % Differential forms
+  % Hodge dual
+  % Maxwell theory
+  % energy momentum tensor of electrodynamic
+  % charged black hole
+  
+  \include{action} % Action principle
+  % Introduction
+  % Euler-Lagrange eqn. for fields
+  % Currents
+  % Maxwell theory
+  % Relativity
+  
+  \include{gauge} % Gauge theories
+  % Introduction
+  % Fibre bundles
+  % Ehresmann connections
+  % U(1) theory
+  % Cartan connections
+  % SO(1,4) theory
+  % eq. of motion with torsion
+  % spin/fermions
   
 	\appendix
 	
   \include{topology}
+  % Topological spaces
+  % Continuous maps
+  % Hausdorff spaces
+  % Normal spaces
+  % Compact spaces
+  % Locally compact spaces
+  % Paracompact Hausdorff spaces
+  
   \include{analysis}
+  % Bump functions
 	
 \end{document}
