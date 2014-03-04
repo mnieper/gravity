@@ -1,0 +1,479 @@
+\chapter{Spacetime}
+
+\section{Introduction}
+
+The fundamental notion of special relativity is that of an \emph{event}.
+In pre-relativity, things located at a specific point in space and time,
+for example the start of the Saturn V rocket launching the Apollo 11
+spaceflight, are described by a unique time in Newton's absolute time and
+a unique place in Euclidean absolute space. The notion of an event combines
+these two qualities into one, which is essential for special relativity
+as space and time by themselves lose their absoluteness.
+
+\emph{Spacetime} is the set of all possible events. Any event that can
+be imagined to happen is an element or a
+\emph{point} in spacetime. Mathematically, spacetime has more
+structure than simply being a set: A point in this set, that is an event, is
+usually described by four scalars, one time and three space coordinates,
+making spacetime four-dimensional. For a general set, however, there is no
+well-defined notion of coordinates or dimension. The theory of manifolds, which
+will be presented in the next section, is the correct mathematical setting in
+which notions like coordinates and dimension make sense.
+
+\section{Manifolds}
+\label{sec:manifolds}
+
+An \emph{$n$-dimensional chart $x = (x, U)$} on a set $M$ whose elements we call
+\emph{points} is an injective map
+$x = (x_1, \dotsc, x_n)\colon U \to \set R^n$ onto an open subset of $\set R^n$ defined on a subset
+$U$ of $M$, the \emph{domain of definition of $x$}. Given a point $p$ lying in the
+domain of definition $U$, the $n$ scalars $x_1(p)$, \dots, $x_n(p)$ are the
+\emph{coordinates of $p$ with respect to the chart $x$}. A
+family $\Set{(x_i, U_i)}{i \in I}$ of charts on $M$ \emph{covers} $M$ if $M \subseteq
+\bigcup_{i \in I} U_i$ that is if every point $p$ of $M$ lies in at least domain
+of definition of the charts $x_i$. In order to be able to describe events in
+spacetime by four coordinates, we postulate that \emph{there is a distinguished
+family of four-dimensional charts that cover spacetime}.
+
+Given two $n$-dimensional charts $(x, U)$ and $(y, V)$ of a set $M$, the map
+\[
+  y \circ x^{-1}|x(U \cap V)\colon x(U \cap V) \to y(U \cap V)
+\]
+is the
+\emph{coordinate transformation from $x$ to $y$}. If this map is a diffeomorphism
+between open subsets of $\set R^n$, the charts $x$ and $y$ are \emph{compatible}.
+An \emph{$n$-dimensional atlas of $M$} is a family of pairwise compatible
+$n$-dimensional charts of $M$ that covers $M$. In order to be able to employ 
+analytic methods, we extend our postulate above by postulating that
+\emph{there is a distinguished four-dimensional atlas of spacetime}.
+
+Let $\mathfrak A$ be any $n$-dimensional atlas of a set $M$, and let $x$ and $y$
+be two arbitrary $n$-dimensional charts of $M$. If $x$ and $y$ are each compatible
+with each chart in $\mathfrak A$, they are compatible with each other. Therefore,
+every atlas $\mathfrak A$ can be uniquely enlarged to a \emph{maximal atlas} in
+which it is contained by adding all $n$-dimensional charts to $\mathfrak A$ that
+are compatible with each in chart in $\mathfrak A$. We also say that the maximal
+atlas is \emph{generated} by the charts contained in $\mathfrak A$.
+
+An \emph{$n$-dimensional premanifold $M$} is an $n$-dimensional manifold $M$ together
+with a maximal $n$-dimensional atlas $\mathfrak U^\infty(M)$ of $M$. The set of
+all charts $(x, U)$ in $\mathfrak U^\infty(M)$ that contains a given point $p \in M$ is 
+denoted by $\mathfrak U^\infty(p, M)$. A \emph{chart of $M$} is a chart in the
+maximal atlas $\mathfrak U^\infty(M)$.
+An \emph{atlas of the premanifold $M$} is any atlas of $M$ which is contained in
+the maximal atlas $\mathfrak U^\infty(M)$. With these terms, we can say that
+\emph{spacetime is a four-dimensional premanifold}.
+
+Using the atlas of a premanifold $M$, one can define the notion of neighborhoods
+of points on $M$: A subset $G$ of the underlying set of $M$ is an \emph{open subset
+of $M$} if $x(U \cap G)$ is an open subset for each chart $(x, U)$ of $M$. The
+system of these open subsets of $M$ is a topology (see~\prettyref{sec:topological_spaces})
+on the underlying set of $M$, the \emph{canonical topology of $M$}, so that $M$
+is a topological space in a canonical way.
+
+For any chart $(x, U)$ of the $n$-dimensional premanifold, a subset $V$ of $U$
+is open in $M$ if and only if $x(V)$ is open in $\set R^n$. In particular, $U$ is open.
+The map $x\colon U \to \set R^n$ is continuous.
+
+Generally, the so-defined topology is ill-behaved, however;
+points may not be distinguishable by the topology and one may need infinitely
+many charts to cover even small neighborhoods of points. Excluding these cases
+by adding conditions on the underlying topological space leads to the final definition:
+\begin{dfn}
+  An \emph{$n$-dimensional manifold $M$} is an $n$-dimensional premanifold $M$
+  whose underlying topological space is a paracompact Hausdorff space
+  (see~\prettyref{sec:paracompactness}).
+\end{dfn}
+We extend our postulate from above by postulating that \emph{spacetime is a
+four-dimensional manifold}.
+
+The most basic example of an $n$-dimensional manifold is the $n$-dimensional 
+cartesian space $\set R^n$. Its canonical atlas is the maximal atlas which is generated
+by the identity map $\id_{\set R^n}\colon \set R^n \to \set R^n$ viewed
+as an $n$-dimensional chart. The topology defined by this atlas is, of course,
+the canonical topology of $\set R^n$, which is the topology of a paracompact
+Hausdorff space.
+
+Requiring that the underlying topological space of spacetime is a paracompact
+Hausdorff space has a number of pleasant consequences: For example, the underlying
+topological spaces of manifolds are normal, which follows from \prettyref{prop:paracompact_spaces}.
+Furthermore, we have:
+\begin{prop}
+  The underlying space of an $n$-dimensional manifold $M$ is locally compact.
+\end{prop}
+(For the definition of local compactness, see \prettyref{sec:locally_compact}.)
+
+\begin{proof}
+  For $p \in M$ choose a chart $(x, U) \in \mathfrak U^\infty(p, M)$. By openness
+  of $x(U)$ in $\set R^n$, there exists an $\epsilon > 0$ such that $U_\epsilon(x(p))
+  \subseteq x(U)$. We claim that $K \coloneqq x^{-1}(\overline{U_{\frac 1 2 \epsilon}(x(p))})$
+  is a compact neighborhood of $p$:
+  
+  The subset $K$ is a neighborhood of $p$ as
+  $p \in x^{-1}(U_{\frac 1 2 \epsilon}(x(p))) \subseteq K$ and
+  because $x^{-1}(U_{\frac 1 2 \epsilon}(x(p)))$ is an open subset of $M$.
+
+  To show that $K$ is compact, let $(U_i)_{i \in I}$ be a family of open subsets
+  of $U$ that cover $K$. By definition of the topology of $M$, the images $(x(U_i))_{i \in I}$
+  form an open cover of the compact space $\overline{U_{\frac 1 2 \epsilon}(x(p))}$.
+  Thus there is a finite subset $J \subset I$ such that $(x(U_i)_{i \in J}$ is
+  an open cover of $\overline{U_{\frac 1 2 \epsilon}(x(p)}$. It follows that
+  $(U_i)_{i \in J}$is a finite open cover of $K$.
+\end{proof}
+
+Often, we have to restrict our attention to small pieces (that is open subsets)
+of a given $n$-dimensional manifold $M$, for example spacetime. This can be
+done as follows: Let $G$ be an open subspace of $M$. Let $\mathfrak U^\infty(G)$
+be the unique maximal $n$-dimensional atlas of $G$ that contains the atlas
+\[
+  \Set{(x|U \cap G, U \cap G)}{(x, U) \in \mathfrak U^\infty(M)}.
+\]
+Then $G$ becomes an $n$-dimensional manifold itself, whose underlying topological
+space is the subspace $G$ of $M$. An $n$-dimensional manifold of this form is
+an \emph{open submanifold of $M$}. The domains of definitions of the charts of
+$M$ are open submanifolds of $M$.
+
+\section{Functions on a manifold}
+\label{sec:functions}
+
+As we have postulated, we can ``measure'' each event in spacetime by giving the
+scalar values of four coordinates (after choosing a chart). Each coordinate can
+be thought of as a scalar field that assigns to each point (in the domain of
+definition of its chart) a scalar value. This notion is generalised as follows:
+
+\begin{dfn}
+  A \emph{(smooth) function $\phi\colon M \to \set R$} on an $n$-dimensional
+  manifold $M$ is a mapping $\phi$ from the underlying set of $M$ to the reals
+  such that for each chart $(x, U)$ of $M$ the map
+  \[
+    \phi \circ x^{-1}\colon x(U) \to \set R
+  \]
+  is smooth.
+\end{dfn}
+
+In order to show that a map $\phi\colon M \to \set R$ is a function in the above
+sense, it suffices that
+for each point $p \in M$ there exists a chart $(x, U) \in \mathfrak U^\infty(p, M)$
+such that $\phi \circ x^{-1}\colon x(U) \to \set R$ is smooth.
+
+Every function is continuous with respect to the underlying
+topologies of $M$ and $\set R$, respectively. Let $\phi$ be a function on $M$
+and $G$ an open submanifold. The \emph{restriction $\phi|G$ of $\phi$ to $G$},
+given by
+\[
+  \phi|G\colon G \to M, p \mapsto f(p)
+\]
+is a function on the manifold $G$. For any chart $(x, U)$ of $M$, the coordinate
+functions $x_1$, \dots, $x_n\colon U \to M$ are smooth functions on the open
+submanifold $U$.
+
+All functions on $M$ form an algebra (over the reals), denoted by
+$\mathcal C^\infty(M)$, where addition and multiplication are defined point-wise.
+The function with constant value $c \in \set R$ is often denoted by $\underline c$.
+The sets of functions of the open submanifolds of $M$ fulfill the \emph{sheaf
+condition}, that is for every open cover $(U_i)_{i \in I}$ of $M$ and functions
+$\phi_i \in \mathcal C^\infty(M)$ one has
+\[
+  \left(\forall i, j \in I : \phi_i|U_i \cap U_j = \phi_j|U_i \cap U_j\right)
+  \implies \exists! \phi \in \mathcal C^\infty(M) \, \forall i \in I :
+  \phi|U_i = \phi_i.
+\]
+In other words, we can glue functions along open submanifolds.
+
+If $\Phi\colon \set R \to \set R$ is any smooth function between the reals, 
+the composition $\Phi \circ \phi\colon M \to \set R$ is a function on $M$
+whenever $\phi\colon M \to \set R$ is a function.
+
+A manifold possesses many functions in a sense made precise by the following theorem,
+which relies essentially on the paracompactness of the manifold:
+\begin{thm}
+  \label{thm:paracompact_manifold}
+  Every open cover $(U_i)_{i \in I}$ of a manifold $M$ has a
+  \emph{subordinate
+  partition $(\lambda_i)_{i \in I}$ of unity}, which is a family of functions
+  $\lambda_i\colon M \to \set R$ with the following properties:
+
+  \paragraph{Range}
+  For all $i \in I$ and $p \in M$, the function $\lambda_i$ satisfies $0 \leq \lambda_i(p)
+  \leq 1$.
+  
+  \paragraph{Support}
+  For all $i \in I$, the support of $\lambda_i$ fulfills $\supp \lambda \subseteq U_i$.
+  
+  \paragraph{Local finiteness}
+  Every $p \in M$ posesses a neighborhood $G \in \mathfrak U^0(p, M)$ such that there
+  are only finitely many $i \in I$ with $\supp \lambda_i \cap G \neq \emptyset$.
+  
+  \paragraph{Normalization}
+  For every $p \in M$, the equality $\sum_{i \in I} \lambda_i(p) \equiv 1$ holds.
+\end{thm}
+
+The proof relies on the following lemma, which is also of independent interest:
+\begin{lem}
+  \label{lem:paracompact_manifold}
+  Let $K$ be a compact subspace of a $n$-dimensional manifold $M$. For any open neighborhood
+  $G$ of $K$ in $M$, there exists a function $\phi\colon M \to \set R$ with
+  \begin{align}
+    \label{eq:paracompact_manifold}
+    \forall p \in M: \phi(p) & \ge 0, &
+    \forall p \in K: \phi(p) & > 0, &
+    \supp \phi & \subseteq G.
+  \end{align}
+\end{lem}
+
+\begin{proof}[Proof of \prettyref{lem:paracompact_manifold}]
+  For any $p \in K$ choose a chart $(x, U) \in \mathfrak U^\infty(p, M)$. 
+  By the openness of $x(U)$ in $\set R^n$, there exists an $\epsilon > 0$ with
+  $U_\epsilon(x(p)) \subseteq x(U \cap G)$. Choose a bump function $\psi\colon \set R^n \to
+  \set R$ (see \prettyref{sec:bump_functions}) such that $\phi(u) \ge 0$ for all
+  $u \in \set R^n$, $\phi(u) = 1$ for
+  $\norm u \leq \frac 1 3 \epsilon$ and $\phi(u) = 0$ for $u \ge \frac 2 3 \epsilon$.
+  By the sheaf condition, 
+  \[
+    \phi_p\colon M \to \set R, q \mapsto \begin{cases}
+      \psi(x(q) - x(p)) & \text{if $q \in U$}, \\
+      0 & \text{if $q \in M \setminus x^{-1}(\overline{U_{\frac 2 3 \epsilon}(x(p))}$}
+    \end{cases}
+  \]
+  defines a function on $M$ as $U$ and $M \setminus x^{-1}(\overline{U_{\frac 2 3 \epsilon}(x(p))}$
+  form an open cover of $M$. This function has the properties
+  \begin{align*}
+    \forall q \in M: f_p(q) & \ge 0, &
+    f_p(p) & > 0, &
+    \supp \phi_p & \subseteq G.
+  \end{align*}
+  
+  The open subsets $U_p \coloneqq \Set{q \in M}{f_p(q) > 0}$ with $p \in K$ cover $K$. By
+  compactness of $K$, there exists a finite subset $A \subseteq K$ such that
+  $K$ is covered by $(U_p)_{p \in K}$. By construction, the function
+  $\phi = \sum_{p \in A} \phi_p$
+  fulfills \prettyref{eq:paracompact_manifold}.
+\end{proof}
+
+\begin{proof}[Proof of \prettyref{thm:paracompact_manifold}]
+  For every $p \in M$ choose by local compactness of $M$ a relatively compact neighborhood $G_p
+  \in \mathfrak U(p, M)$. By the covering property, there exists an $i \in I$ with
+  $p \in U_i$. The intersection $G_p \cap U_i$ is again relatively compact in $M$,
+  so we may assume that already $G_p \subseteq U_i$. So  
+  $(G_p)_{p \in M}$ is a refinement of the cover $(U_i)_{i \in I}$.
+  Let $(V_j)_{j \in J}$ be a locally finite refinement of $(G_p)_{p \in M}$. In
+  particular, $(V_j)_{j \in J}$ is a locally finite refinement of $(U_i)_{i \in I}$
+  and each $V_j$ is relatively compact in $M$. By the shrinking lemma, \prettyref{prop:shrinking_lemma},
+  and the normality of the underlying topological space of $M$, there exists
+  another open cover $(V'_j)_{j \in J}$ of $M$ with
+  $\overline{V'_j} \subseteq V_j$ for all $j \in J$.
+  
+  For every $j \in J$, choose by compactness of $\overline{V'_j}$ and
+  \prettyref{lem:paracompact_manifold} a function
+  $\phi_j \in \mathcal C^\infty(M)$ with
+  \begin{align*}
+    \forall p \in M: \phi_j(p) & \ge 0,
+    \forall p \in V'_j: \phi_j(p) & > 0,
+    \supp \phi_j \subseteq V_j.
+  \end{align*}
+  By the local finiteness of the open cover $(V_j)_{j \in J}$, the sum
+  $\phi \coloneqq \sum_{j \in J} \phi_j$ is locally a finite sum and thus defines
+  a function on $M$ by the sheaf condition. By the covering property of
+  $(V'_j)_{j \in J}$,
+  one has $f(p) > 0$ for all $p \in M$.
+  
+  As $(V_j)_{j \in J}$ is a refinement of the cover $(U_i)_{i \in I}$, there exists a
+  map $\alpha\colon J \to I$ with $V_j \subseteq U_{\alpha(i)}$ for all $j \in J$.
+  For each $i \in I$ set $J_i \coloneqq \alpha^{-1}(i)$, so $(J_i)_{i \in I}$ becomes
+  a (disjoint) partition of $I$. For all $i \in I$, set
+  $U'_i \coloneqq \bigcup_{j \in J_i} V_j \subseteq U_i$ and finally
+  \[
+    \lambda_i = \sum_{j \in J_i} \frac{\phi_i}{\phi}.
+  \]
+  By a similar argument as above, the sum on the right hand side is locally finite
+  and, thus, $\lambda_i$ is a function on $M$ with $\lambda_i(p) \ge 0$ for all
+  $p \in M$.
+  
+  By construction, $\supp \lambda_i \subseteq \bigcup_{j \in J_i} V_j = U'_j \subseteq
+  U_i$, which proves the support axiom of a partition of unity. The covering
+  $(U'_i)_{i \in I}$ is locally finite as the covering $(V_j)_{j \in J}$ is locally
+  finite; this uses the disjointness of the $J_i$. From $\supp \lambda_i \subseteq U'_i$
+  for all $i \in I$, the local finiteness axiom follows. By construction,
+  $\sum_{i \in I} \lambda_i \equiv 1$, which is the normalization axiom of a
+  partition of unity.
+  From this, the range axiom follows as we already know that $\lambda_i(p) \ge 0$
+  for all $p \in M$.
+\end{proof}
+
+The existence of partitions of unity on manifolds implies that functions can
+be extended in the following sense:
+
+\begin{cor}
+  Let $\phi$ be a function defined on an open
+  neighborhood $G$ of a point $p$
+  in a manifold $M$. Then there exists a function $\hat \phi \in \mathcal C^\infty(M)$
+  with $\supp \hat\phi \subseteq G$ and
+  such that $\hat \phi$ coincides with $\phi$ on a neighboorhood $U \subseteq G$
+  of $p$ in $M$. The function $\hat \phi$ is called an \emph{extension of $\phi$
+  by zero away from $p$}.
+\end{cor}
+
+\begin{proof}
+  By local compactness (see \prettyref{prop:locally_compact}),
+  there exists a compact neighborhood $K \in \mathfrak U(p, G)$.
+  Choose a partition $(\lambda, \mu)$ of unity subordinate to the open cover
+  $(G, M \setminus K)$ of $M$. By the sheaf condition,
+  \[
+    \hat\phi\colon M \to \set R,
+    \begin{cases}
+      \lambda(p) \cdot \phi(p) & \text{if $p \in G$} \\
+      0 & \text{if $p \in M \setminus \supp \lambda$}
+    \end{cases}
+  \]
+  is a well-defined function on $M$ with $\supp \hat\phi \subseteq G$ and
+  which coincides with $\phi$ on $K$.
+\end{proof}
+
+In particular, we have
+\begin{equation}
+  \label{eq:point_separation}
+  \forall p, q \in M : p \neq q \implies
+  \exists \lambda \in \mathcal C^\infty(M) : \lambda(p) = 1, \lambda(q) = 0:
+\end{equation}
+By the Hausdorff
+condition, there exist an open neighborhoods $G \in \mathfrak U^0(p, M)$
+with $q \notin G$. Then $\lambda$ can be chosen as an extension of the constant
+function $\underline 1|G$ by zero away from $p$.
+
+If we denote by $p^*$ for all $p \in M$ the algebra homomorphism
+\begin{equation}
+  p^*\colon \mathcal C^\infty(M) \to \set R, \phi \mapsto \phi(p),
+\end{equation}
+we can reformulate \prettyref{eq:point_separation} by saying that the map $p \mapsto p^*$ is injective,
+that is the algebra of functions \emph{separate points}. The algebra of functions
+on spacetime is therefore a full set of observables: for any two distinct events
+there is a function that takes different values on the events.
+
+\section{Morphisms}
+\label{sec:morphisms}
+
+A physical body traces out a curve of events in spacetime $M$, namely those events
+where an observer meeds the physical body, its \emph{world line}. If the physical
+body carries a clock with it, each point of its world line is parametrized by
+a scalar, the clock's time measured at that event. In other words, the path of
+the physical body in spacetime together with its defines a map $J \to M$, 
+where $J$ is an (open) interval. Both the domain and the target of this map is a 
+manifold, where $J$ is viewed as an open submanifold of the reals. The physical
+body does not jump through spacetime, so the map will be continuous.
+In order to employ analytical methods, it is sensible to assume moreover that
+this map is a morphism according to the following definition:
+
+\begin{dfn}
+  A \emph{morphism $f\colon M \to N$} between two manifolds $M$ and $N$ is a
+  continuous map $f\colon M \to N$ such that for each pair of charts
+  $(x, U) \in \mathfrak U^\infty(M)$ and $(y, V) \in \mathfrak U^\infty(N)$ the
+  composition
+  \[
+    y \circ f \circ x^{-1}|x(f^{-1}(V) \cap U)\colon x(f^{-1}(V) \cap U) \to y(V) 
+  \]
+  is a smooth map (between open subsets of cartesian spaces).
+\end{dfn}
+
+In accordance with our above wording, a \emph{curve $\alpha\colon J \to M$} is a
+morphism where $J$ is an open interval viewed as a submanifold of $\set R$, so
+the world line of a physical body becomes a curve in this sense
+by endowing the physical body with a clock.
+
+A map $f\colon M \to N$ between manifolds is a morphism if and only if
+for all functions $\psi \in \mathcal C^\infty(N)$ the \emph{pullback of $\psi$
+by $f$}, given by
+\begin{equation}
+  f^{-1}\psi\colon M \to \set R, p \mapsto \psi(f(p)),
+\end{equation}
+is a function on $M$.
+
+Thus, a map $\phi\colon M \to \set R$ defined on a manifold $M$ is a
+morphism if and only if it is a function. Further, a map $f\colon G \to H$ between
+open subsets of cartesian spaces is a morphism if and only if it is a smooth
+map in the sense of calculus.
+
+The identity $\id_M\colon M \to M$ of $M$ is a morphism. The composition $g \circ f$
+of two morphisms $f\colon M \to N$ and $g\colon N \to P$ between manifolds is
+again a morphism. The manifolds together with the morphisms between them thus
+form a \emph{category}.
+
+The \emph{inclusion $i\colon U \to M, p \mapsto p$} of an open submanifold $U$
+of $M$ is a morphism. Thus, the restriction $f|U = f \circ i$ of a morphism
+$f\colon M \to N$ to $U$ is again a morphism.
+
+\section{Vectors}
+\label{sec:vectors}
+
+% beobachter
+
+% VECTORS AND VECTOR FIELDS!
+
+\section{Problems}
+
+\begin{xca}
+  Prove that every $n$-dimensional atlas of a set $M$ is contained in a unique
+  maximal $n$-dimensional atlas of $M$.
+\end{xca}
+
+\begin{xca}
+  Prove that the system of open subsets of a premanifold $M$ is a topology on
+  the underlying set of $M$.
+\end{xca}
+
+\begin{xca}
+  Let $(x, U)$ be a chart of an $n$-dimensional premanifold $M$. Show that a 
+  subset $V$ of $U$ is open in $M$ if and only if $x(V)$ is open in $\set R^n$.
+  Conclude that $x\colon U \to \set R^n$ is a continuous map.
+\end{xca}
+
+\begin{xca}
+  Prove that an open submanifold of a manifold is in fact a manifold.
+\end{xca}
+
+\begin{xca}
+  Prove the following:
+  Let $M$ be a manifold and $\phi\colon M \to \set R$ a map. Assume that for each
+  point $p \in M$ there exists a chart $(x, U) \in \mathfrak U^\infty(p, M)$
+  such that $\phi \circ x^{-1}\colon x(U) \to \set R$ is smooth. Then $\phi$
+  is a (smooth) function.
+\end{xca}
+
+\begin{xca}
+  Prove that every function $f$ on an $n$-dimensional manifold $M$ is a
+  continuous map $f\colon M \to \set R$ for the underlying topologies of $M$ and
+  $\set R$.
+\end{xca}
+
+\begin{xca}
+  Prove that the functions on a manifold $M$ form a \emph{sheaf of algebras},
+  that is prove that $\mathcal C^\infty(U)$ is closed under constants,
+  addition and multiplication for every open subset $U$ of $M$, that the restrictions
+  $\mathcal C^\infty(U) \to \mathcal C^\infty(V)$ are homomorphisms of algebras
+  for every inclusion $V \subseteq U$ of open subsets of $M$, and that 
+  for every open cover $(U_i)_{i \in I}$ of $M$ and functions
+  $\phi_i \in \mathcal C^\infty(M)$ one has
+  \[
+    \left(\forall i, j \in I : \phi_i|U_i \cap U_j = \phi_j|U_i \cap U_j\right)
+    \implies \exists! \phi \in \mathcal C^\infty(M) \, \forall i \in I :
+    \phi|U_i = \phi_i.
+  \]
+\end{xca}
+
+\begin{xca}
+  Prove that a map $f\colon M \to N$ between manifolds is a morphism if and only if
+  \[
+    \forall \psi \in \mathcal C^\infty(M):
+    f^{-1} \psi \in \mathcal C^\infty(N).
+  \]
+\end{xca}
+
+\begin{xca}
+  Prove that the composition $g \circ f$ or two morphisms $f\colon M \to N$
+  and $g\colon N \to P$ between manifolds is again a morphism.
+\end{xca}
+
+\begin{xca}
+  Proof that the inclusion morphism $i\colon U \to M$ for any open submanifold
+  $U$ of a manifold $M$ is in fact a morphism.
+\end{xca}
+

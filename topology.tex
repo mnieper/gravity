@@ -1,0 +1,269 @@
+\chapter{Topology}
+
+\section{Topological spaces}
+\label{sec:topological_spaces}
+
+\begin{dfn}
+  Let $X$ be a set. A \emph{topology on $X$} is a subset of the
+  power set of $X$, whose elements are called \emph{open subsets of the topology}
+  and which fulfills the following axioms:
+  
+  \paragraph{Union}
+  Let $(U_i)_{i \in I}$ be a family of open subsets of the topology. Then the
+  union $\bigcup_{i \in I} U_i$ is again an open subset of the topology.
+  
+  \paragraph{Intersection}
+  Let $U_1$, \dots, $U_n$ be finitely many open subsets of the topology. Then
+  their intersection $U_1 \cap \dotsb \cap U_n$
+  is again an open subset of the topology.
+  
+  A \emph{topological space $X$} is a set $X$ together with a topology $\mathfrak U^0(X)$
+  on $X$. An \emph{open set of a topological space $X$} is an open set of the topology
+  of $X$.
+  A \emph{point $p \in X$ of a topological space $X$} is an element of the
+  underlying set of $X$.
+\end{dfn}
+
+As the union of an empty family of subsets of a set $X$ is the empty subset,
+the empty subset is open with respect to any topology on $X$.
+As the intersection of an empty family of subsets of $X$ is the whole set $X$,
+the whole set $X$ is open with respect to any topology on $X$.
+
+Let $X$ be a topological space.
+A \emph{neighborhood of a point $p$ in $X$} is a subset $G$
+of the underlying set of $X$ such that there exists an open subset $U$ of $X$ with
+$p \in U \subseteq G$. The set of neighborhoods of $p$ is denoted by
+$\mathfrak U(p, X)$. A neighborhood that is at the same time an open subset
+is an \emph{open neighborhood}. The set of open neighborhoods of $p$ is
+denoted by $\mathfrak U^0(p, X)$. A subset $U$ of the underlying set of the
+topological space $X$ is open if and only if it is a neighborhood of every point
+$p \in U$. A \emph{neighborhood of a subset $A$ of $X$} is a subset $G$ that is
+a neigborhood of every point $p \in A$. The set of neighborhoods of $A$ is denoted
+by $\mathfrak U(A, X)$.
+
+An \emph{closed subset $Z \subseteq X$ of $X$} is a subset of the underlying
+set of $X$ such that its complement $X \setminus Z$ is open. Let $Y$ be an
+arbitrary subset of $X$. The \emph{closure $\overline Y$ of $Y$ in $X$} is the
+smallest closed subset of $X$ containing $Y$, that is
+\begin{equation}
+  \overline Y = \bigcap_{\text{$Z \subseteq X$ is a closed subset}} Z
+\end{equation}
+
+Let $Y$ be any subset of the underlying set of $X$. Set
+\[
+  \mathfrak U^0(Y) \coloneqq \Set{Y \cap U}{U \in \mathfrak U^0(X)}
+\]
+This is a topology, the \emph{subspace topology}. Endowed with this topology,
+$Y$ canonically becomes a topological space itself. Topological spaces of this form
+are called \emph{subspaces of $X$}. If $Y$ is a closed subset of $X$, a subset of
+$Y$ is closed in $Y$ if and only if it is closed in $X$. In particular, the closure
+of a subset of $Y$ in $Y$ is the same as its closure in $X$.
+
+The cartesian space $\set R^n$ is canonically a topological space with the
+topology defined by
+\begin{equation}
+  \label{eq:cartesian_topology}
+  \mathfrak U^0(\set R^n) = \Set{U \subseteq \set R^n}{\forall p \in U \,
+  \exists \epsilon \in \set R^+: U_\epsilon(p) \subseteq U},
+\end{equation}
+where
+\begin{equation}
+  U_\epsilon(p) \coloneqq \Set{q \in \set R^n}{\norm{q - p} < \epsilon}
+\end{equation}
+for an $\epsilon > 0$ is the standard \emph{$\epsilon$-neighborhood}. Its 
+closure under the so-defined topology is given by
+\begin{equation}
+  \overline U_{\epsilon(p)} = B_\epsilon(p) \coloneqq
+  \Set{q \in \set R^n}{\norm {q - p} \leq \epsilon}.
+\end{equation}
+
+\section{Continuous maps}
+
+\begin{dfn}
+  A \emph{continuous map $f\colon X \to Y$ from an topological space $X$ to
+  a topological space $Y$} is a mapping $f\colon X \to Y$ such that
+  \[
+    \forall V \in \mathfrak U^0(Y) : f^{-1}(V) \in \mathfrak U^0(X).
+  \]
+\end{dfn}
+
+Let $X$ be a topological space and let $\phi\colon X \to \set R$ be a continuous map.
+The \emph{support $\supp \phi$ of $\phi$} is the closed subset
+\[
+  \Set{p \in X}{\forall G \in \mathfrak U(p, X): \phi|G \not\equiv 0}.
+\]
+It is given by
+\begin{equation}
+  \label{eq:support}
+  \supp \phi = \overline{\Set{p \in X}{\phi(p) \neq 0}}.
+\end{equation}
+
+\section{Hausdorff spaces}
+\label{sec:hausdorff_spaces}
+
+\begin{dfn}
+  A \emph{Hausdorff space $X$} is a topological space $X$ such that for every
+  pair $p$ and $q$ of points of $X$ with $p \neq q$, there are neighborhoods $G$
+  of $p$ and $H$ of $q$, respectively, such that $G \cap H = \emptyset$.
+\end{dfn}
+A subspace of a Hausdorff space is again a Hausdorff space. Any finite subset of
+a Hausdorff space is a closed subset.
+
+Cartesian space $\set R^n$ is an example for a Hausdorff space.
+
+\section{Normal spaces}
+
+\begin{dfn}
+  A Hausdorff space $X$ is \emph{normal} such that for any disjoint closed
+  subsets $A$ and $B$ of $X$ there exists neighborhoods $U \in \mathfrak U(A, X)$
+  and $V \in \mathfrak U(B, X)$ with $U \cap V$.
+\end{dfn}
+
+An open cover $(U_i)_{i \in I}$ of a topological space $X$ is \emph{locally finite}
+if every point of $X$ possesses a neighborhood $G$ such that there only finitely
+many $i \in I$ with $G \cap U_i \neq \emptyset$.
+\begin{thm}[Shrinking lemma]
+  \label{prop:shrinking_lemma}
+  For any locally finite open cover $(U_i)_{i \in I}$ of a normal Hausdorff space $X$, there
+  exists a locally finite open cover $(V_i)_{i \in I}$ with
+  \[
+    \forall i \in I : V_i \subseteq \overline{V_i} \subseteq U_i.
+  \]
+\end{thm}
+
+\section{Compact spaces}
+\label{sec:compact}
+
+A family $(U_i)_{i \in I}$ of open subsets of a topological space $X$ is an
+\emph{open cover of $X$} if
+\[
+  X = \bigcup_{i \in I} U_i.
+\]
+A \emph{subcover} of an open cover $(U_i)_{i \in I}$ of $X$
+is an open cover of the form $(U_i)_{i \in I'}$ for $I' \subseteq I$. An open
+cover $(U_i)_{í \in I}$ of $X$ is \emph{finite} if the index set $I$ is finite.
+
+If $Y$ is a subspace of a topological space $X$ and $(U_i)_{i \in I}$ is a family
+of open subsets of $X$ such that $(Y \cap U_i)_{i \in I}$ is an open cover of
+$Y$, we often say for simplicity that $(U_i)_{i \in I}$ is an open cover of $Y$.
+
+\begin{dfn}
+  A \emph{compact space} is a Hausdorff space $X$ such that every open cover of
+  $X$ has a finite subcover.
+\end{dfn}
+
+A subset $K$ of the underlying set of a Hausdorff space $X$ is \emph{compact}
+if it is a compact space when endowed with the subspace topology. It is \emph{relatively
+compact in $X$} if its closure in $X$ is compact.
+
+A compact subspace of a Hausdorff space $X$ is always a closed subset of $X$. A closed
+subset of a compact space is again compact.
+
+\begin{thm}
+  A subset $K$ of cartesian space $\set R^n$ is compact if and only if it is closed
+  and there exists an $R \in \set R^+$ such that $K \subseteq \Set{p \in \set R^n}{\norm p \leq R}$.
+\end{thm}
+
+The latter condition on $K$ says that $K$ is \emph{bounded}.
+
+\section{Locally compact spaces}
+\label{sec:locally_compact}
+
+\begin{dfn}
+  A Hausdorff space $X$ is \emph{locally compact} if each $p \in X$ has a
+  neighborhood $U \in \mathfrak U(p, X)$, which is compact.
+\end{dfn}
+The condition of being locally compact for a Hausdorff space $X$ is equivalent to
+requiring that every point $p \in X$ possesses an open neighborhood $U \in \mathfrak U(p, X)$,
+which is relatively compact in $X$.
+
+\begin{prop}
+  \label{prop:locally_compact}
+  On a locally compact Hausdorff space $X$, every neighborhood $G$ of a point $p \in X$
+  contains a compact neighborhood $K \in \mathfrak U(p, X)$.
+\end{prop}
+
+\section{Paracompact Hausdorff spaces}
+\label{sec:paracompactness}
+
+A \emph{refinement} of an open cover $(U_i)_{i \in I}$ of a topological space $X$
+is an open cover $(V_j)_{j \in J}$ of $X$ such that
+\[
+  \forall j \in J \, \exists i \in I: V_j \subseteq U_i.
+\]
+
+\begin{dfn}
+  A \emph{paracompact Hausdorff space} is a Hausdorff space $X$ such that every
+  open cover of $X$ has a locally finite refinement.
+\end{dfn}
+
+\begin{prop}
+  \label{prop:paracompact_spaces}
+  A paracompact Hausdorff space is normal.
+\end{prop}
+
+Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
+
+\section{Problems}
+
+\begin{xca}
+  Let $X$ be a topological space. Prove that a subset $U$ of the underlying set
+  of $X$ is open if and only if it is a neighborhood of every point $p \in U$.
+\end{xca}
+
+\begin{xca}
+  Prove that the subspace topology of a subset of the underlying set of a topological
+  space is in fact a topology.
+\end{xca}
+
+\begin{xca}
+  Let $Y$ be a closed subset of a topological space $X$. Let $Z$ be a subset of
+  $Y$. Show that $Z$ is closed in $Y$ if and only if it is closed in $X$.
+\end{xca}
+
+\begin{xca}
+  Show that \prettyref{eq:cartesian_topology} defines a topology on $\set R^n$.
+\end{xca}
+
+\begin{xca}
+  Show that the closure of a standard $\epsilon$-neighborhood in $\set R^n$
+  for the canonical topology is given by
+  \begin{equation}
+    \overline U_{\epsilon(p)} = \Set{q \in \set R^n}{\norm {q - p} \leq \epsilon}.
+  \end{equation}
+\end{xca}
+
+\begin{xca}
+  Let $X$ be a topological space. Prove that the support of a continuous map
+  $\phi\colon X \to \set R$ is indeed closed and that the formula \prettyref{eq:support}
+  holds.
+\end{xca}
+
+\begin{xca}
+  Prove that a subspace of a Hausdorff space is again a Hausdorff space.
+\end{xca}
+
+\begin{xca}
+  Prove that a finite subset of a Hausdorff space is a closed subset.
+\end{xca}
+
+\begin{xca}
+  Prove that a compact subspace $K$ of a Hausdorff space $X$ is always a closed subset
+  of $X$.
+\end{xca}
+
+\begin{xca}
+  Prove that a closed subset $Z$ of a compact space $K$ is again compact.
+\end{xca}
+
+\begin{xca}
+  Prove that a Hausdorff space $X$ is locally compact if and only if every point
+  $p \in X$ possesses an open neighborhood $U \in \mathfrak U(p, X)$ such that
+  $U$ is relatively compact in $X$:
+\end{xca}
+
+\begin{xca}
+  Show that the canonical topology on $\set R^n$ makes cartesian space into
+  a paracompact Hausdorff space.
+\end{xca}
+
