@@ -414,9 +414,127 @@ $f\colon M \to N$ to $U$ is again a morphism.
 \section{Vectors}
 \label{sec:vectors}
 
-% beobachter
+By an \emph{observer}, we mean a curve $\alpha\colon J \to M$ in spacetime $M$,
+which might be traced out by a physical body, and relative to which one may
+measure events. First and foremost, an observer defines a set of events, namely
+the set $\alpha(J)$ of events traced out by the observer. This defines the
+relation of being at the same spatial location as the observer: an event $p$ is 
+\emph{at the same spatial location as the oberver} if and only if
+$p \in \alpha(J)$. The curve $\alpha$, however, is not determined by the set
+$\alpha(J)$ of events alone; it does not capture the dynamics of $\alpha$.
+For example, if we move infinitesimally from $t$ to $t + \diff t$ on $J$, we
+expect that $\alpha(t)$ moves infinitesimally to $\alpha(t) + d \alpha(t)$. In
+other words, we expect $\frac{\diff\alpha(t)}{\diff t}$ to be a vector on $M$
+tangent to the curve $\alpha(t)$. At the moment, howoever, we have no notion of
+such a thing as a vector, which with we could describe dynamics, on a manifold $M$.
+The purpose of this section is to remedy this.
 
-% VECTORS AND VECTOR FIELDS!
+The basic idea of defining vectors on a manifold $M$ is the following:
+Any point $p$ assigns a value $p^* \phi = \phi(p)$ to each function
+$\phi \in \mathcal C^\infty(M)$, and we can reconstruct the point from these
+values as the map $p \mapsto p^*$
+is injective. Assume that we already have the notion of a vector $v$ at a point $p$.
+It would assign a change of values along $v$, a derivative, written $v \cdot \phi$, to each
+function $f$. Thus such a vector would give rise to a function
+\[
+  v\colon \mathcal C^\infty(M) \to \set R, \phi \mapsto v \cdot \phi.
+\]
+A vector should be reconstructable from this map, so that the functions form
+a complete set of observables for vectors. This map should have the
+properties of a first-order derivative operator, so we end up with the following
+definition:
+
+\begin{dfn}
+  A \emph{vector $v$ at a point $p \in M$} is a map
+  \[
+    v\colon \mathcal C^\infty(M) \to \set R, \phi \mapsto v \cdot \phi,
+  \]
+  such that the following axioms hold:
+  
+  \paragraph{Constants}
+  For all $c \in \set R$, one has $v \cdot \underline c = 0$.
+
+  \paragraph{Linearity}
+  For all $a$, $b \in \set R$ and all $\phi$, $\psi \in \mathcal C^\infty(M)$,
+  one has $v \cdot (a \, \phi + b \, \psi) = a \, v \cdot \phi + b \, v \cdot \psi$.
+  
+  \paragraph{Leibniz rule}
+  For all $\phi$, $\psi \in \mathcal C^\infty(M)$, one has
+  $v \cdot (\phi \, \psi) = (v \cdot \phi) \, \psi(p) + \phi(p) \, (v \cdot \psi)$.
+\end{dfn} 
+
+The real number $v \cdot \phi$ is the \emph{derivative of $\phi$ along $v$}. For
+example, the constants axiom says that constants have vanishing derivative along
+any vector.
+
+The set of all vectors at a point $p \in M$ is called the \emph{tangent space
+of $M$ at $p$} and is denoted by $\Tang_p M$. The tangent space $\Tang_p M$ is
+canonically a (real) vector space, where addition and scalar multiplication
+are defined ``function-wise'':
+\begin{align*}
+  0 \cdot \phi & \coloneqq 0,&
+  (a \, v) \cdot \phi & \coloneqq a \, (v \cdot \phi), &
+  (v + w) \cdot \phi & \coloneqq v \cdot \phi + w \cdot \phi
+\end{align*}
+for all $v$, $w \in \Tang_p M$, $a \in \set R$ and $\phi \in \mathcal C^\infty(M)$.
+
+The first basic result, which partially shows that the above definition of a 
+vector in fact coincides with the intuitive notion, is that the derivative of
+a function $\phi$ along a vector at a point $p$ depends only on the values of $\phi$
+in a neighborhood of $p$:
+
+\begin{lem}
+  Let $G$ be an open neighborhood of a point $p \in M$ such that $\phi|G = \psi|G$
+  for two functions $\phi$ and $\psi \in \mathcal C^\infty(M)$. Then
+  \[
+    \forall v \in \Tang_p M: v \cdot \phi = v \cdot \psi.
+  \]
+\end{lem}
+
+\begin{proof}
+  By \prettyref{lem:paracompact_manifold}, choose a smooth function $\lambda \in
+  \mathcal C^\infty$ with $\lambda(p) = 1$ and $\supp \lambda \subseteq G$. Then
+  \[
+    \begin{split}
+      v \cdot \phi - v \cdot \psi
+      & = v \cdot (\phi - \psi) = v \cdot \left((1 - \lambda) \, (\phi - \psi)\right) \\
+      & = \left(v \cdot (1 - \lambda)\right) \, (\phi(p) - \psi(p))
+      + (1 - \lambda(p)) \, \left(v \cdot (\phi - \psi)\right) = 0 + 0 \\
+      & = 0.
+    \end{split}
+  \]
+\end{proof}
+
+With this result we can completely determine the structure of the tangent space
+$\Tang_p M$. In fact, we have:
+
+\begin{thm}
+  Let $M$ be an $n$-dimensional manifold. For each point $p \in M$, the tangent
+  space $\Tang_p M$ is an $n$-dimensional vector space. More precisely, given
+  a chart $(x, U) \in \mathfrak U^\infty(p, M)$, a basis of $\Tang_p M$ is given
+  by the vectors
+  \[
+    \frac{\partial}{\partial x_i}|_p\colon \mathcal C^\infty(M)
+    \to \set R, f \mapsto \frac{\partial \left((f|U) \circ x^{-1}\right)}{\partial x_i}(x(p))
+    \eqqcolon \frac{\partial f}{\partial x_i}(p),  
+  \]
+  where $i = 1, \dotsc, n$. If $(y, V) \in \mathfrak U^\infty(p, M)$ is another
+  chart around $p$, the change of basis is given by
+  \[
+    \frac{\partial}{\partial x_i}|_p =
+    \sum_{j = 1}^n \frac{\left(\partial (y_j|V) \circ x^{-1}\right)}{\partial x_i}(x(p))
+    \, \frac{\partial}{\partial y_j}|_p
+    =
+    \sum_{j = 1}^n \frac{\partial y_j}{\partial x_i}(p) \, 
+    \frac{\partial}{\partial y_j}|_p.
+  \]  
+\end{thm}
+The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
+\emph{induced basis of $\Tang_p M$ by the chart $x$}.
+
+
+% TODO Pushforward of vectors;
+% TODO Show that T_p U = T_p M by locality.
 
 \section{Tensors}
 
