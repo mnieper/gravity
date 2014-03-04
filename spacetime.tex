@@ -29,7 +29,7 @@ $x = (x_1, \dotsc, x_n)\colon U \to \set R^n$ onto an open subset of $\set R^n$ 
 $U$ of $M$, the \emph{domain of definition of $x$}. Given a point $p$ lying in the
 domain of definition $U$, the $n$ scalars $x_1(p)$, \dots, $x_n(p)$ are the
 \emph{coordinates of $p$ with respect to the chart $x$}. A
-family $\Set{(x_i, U_i)}{i \in I}$ of charts on $M$ \emph{covers} $M$ if $M \subseteq
+family $\Set{(x_i, U_i)}_{i \in I}$ of charts on $M$ \emph{covers} $M$ if $M \subseteq
 \bigcup_{i \in I} U_i$ that is if every point $p$ of $M$ lies in at least domain
 of definition of the charts $x_i$. In order to be able to describe events in
 spacetime by four coordinates, we postulate that \emph{there is a distinguished
@@ -39,9 +39,10 @@ Given two $n$-dimensional charts $(x, U)$ and $(y, V)$ of a set $M$, the map
 \[
   y \circ x^{-1}|x(U \cap V)\colon x(U \cap V) \to y(U \cap V)
 \]
-is the
+is called the
 \emph{coordinate transformation from $x$ to $y$}. If this map is a diffeomorphism
-between open subsets of $\set R^n$, the charts $x$ and $y$ are \emph{compatible}.
+between open subsets of $\set R^n$, the charts $x$ and $y$ are said to be
+\emph{compatible}.
 An \emph{$n$-dimensional atlas of $M$} is a family of pairwise compatible
 $n$-dimensional charts of $M$ that covers $M$. In order to be able to employ 
 analytic methods, we extend our postulate above by postulating that
@@ -55,7 +56,7 @@ which it is contained by adding all $n$-dimensional charts to $\mathfrak A$ that
 are compatible with each in chart in $\mathfrak A$. We also say that the maximal
 atlas is \emph{generated} by the charts contained in $\mathfrak A$.
 
-An \emph{$n$-dimensional premanifold $M$} is an $n$-dimensional manifold $M$ together
+An \emph{$n$-dimensional premanifold $M$} is set $M$ together
 with a maximal $n$-dimensional atlas $\mathfrak U^\infty(M)$ of $M$. The set of
 all charts $(x, U)$ in $\mathfrak U^\infty(M)$ that contains a given point $p \in M$ is 
 denoted by $\mathfrak U^\infty(p, M)$. A \emph{chart of $M$} is a chart in the
@@ -73,12 +74,14 @@ is a topological space in a canonical way.
 
 For any chart $(x, U)$ of the $n$-dimensional premanifold, a subset $V$ of $U$
 is open in $M$ if and only if $x(V)$ is open in $\set R^n$. In particular, $U$ is open.
-The map $x\colon U \to \set R^n$ is continuous.
+The map $x\colon U \to \set R^n$ is continuous in the sense of maps between
+topological spaces.
 
 Generally, the so-defined topology is ill-behaved, however;
 points may not be distinguishable by the topology and one may need infinitely
 many charts to cover even small neighborhoods of points. Excluding these cases
-by adding conditions on the underlying topological space leads to the final definition:
+by adding technical conditions on the underlying topological space leads to the
+final definition:
 \begin{dfn}
   An \emph{$n$-dimensional manifold $M$} is an $n$-dimensional premanifold $M$
   whose underlying topological space is a paracompact Hausdorff space
@@ -106,31 +109,34 @@ Furthermore, we have:
 \begin{proof}
   For $p \in M$ choose a chart $(x, U) \in \mathfrak U^\infty(p, M)$. By openness
   of $x(U)$ in $\set R^n$, there exists an $\epsilon > 0$ such that $U_\epsilon(x(p))
-  \subseteq x(U)$. We claim that $K \coloneqq x^{-1}(\overline{U_{\frac 1 2 \epsilon}(x(p))})$
+  \subseteq x(U)$. We claim that
+  \[
+    K \coloneqq x^{-1}(\overline{U_{\frac \epsilon 2}(x(p))})
+  \]
   is a compact neighborhood of $p$:
   
   The subset $K$ is a neighborhood of $p$ as
-  $p \in x^{-1}(U_{\frac 1 2 \epsilon}(x(p))) \subseteq K$ and
+  $p \in x^{-1}(U_{\frac \epsilon 2}(x(p))) \subseteq K$ and
   because $x^{-1}(U_{\frac 1 2 \epsilon}(x(p)))$ is an open subset of $M$.
 
   To show that $K$ is compact, let $(U_i)_{i \in I}$ be a family of open subsets
   of $U$ that cover $K$. By definition of the topology of $M$, the images $(x(U_i))_{i \in I}$
-  form an open cover of the compact space $\overline{U_{\frac 1 2 \epsilon}(x(p))}$.
-  Thus there is a finite subset $J \subset I$ such that $(x(U_i)_{i \in J}$ is
-  an open cover of $\overline{U_{\frac 1 2 \epsilon}(x(p)}$. It follows that
-  $(U_i)_{i \in J}$is a finite open cover of $K$.
+  form an open cover of the compact space $\overline{U_{\frac \epsilon 2}(x(p))}$.
+  Thus there is a finite subset $J \subset I$ such that $(x(U_i))_{i \in J}$ is
+  an open cover of $\overline{U_{\frac \epsilon 2}(x(p)}$. It follows that
+  $(U_i)_{i \in J}$ is a finite open cover of $K$.
 \end{proof}
 
-Often, we have to restrict our attention to small pieces (that is open subsets)
+Often, we have to restrict our attention to small pieces (that is, open subsets)
 of a given $n$-dimensional manifold $M$, for example spacetime. This can be
 done as follows: Let $G$ be an open subspace of $M$. Let $\mathfrak U^\infty(G)$
 be the unique maximal $n$-dimensional atlas of $G$ that contains the atlas
 \[
-  \Set{(x|U \cap G, U \cap G)}{(x, U) \in \mathfrak U^\infty(M)}.
+  \Set{(x|U \cap G, U \cap G) : (x, U) \in \mathfrak U^\infty(M)}.
 \]
 Then $G$ becomes an $n$-dimensional manifold itself, whose underlying topological
 space is the subspace $G$ of $M$. An $n$-dimensional manifold of this form is
-an \emph{open submanifold of $M$}. The domains of definitions of the charts of
+called an \emph{open submanifold of $M$}. The domains of definitions of the charts of
 $M$ are open submanifolds of $M$.
 
 \section{Functions on a manifold}
@@ -172,20 +178,21 @@ $\mathcal C^\infty(M)$, where addition and multiplication are defined point-wise
 The function with constant value $c \in \set R$ is often denoted by $\underline c$.
 The sets of functions of the open submanifolds of $M$ fulfill the \emph{sheaf
 condition}, that is for every open cover $(U_i)_{i \in I}$ of $M$ and functions
-$\phi_i \in \mathcal C^\infty(M)$ one has
+$\phi_i \in \mathcal C^\infty(U_i), i \in I$ one has
 \[
   \left(\forall i, j \in I : \phi_i|U_i \cap U_j = \phi_j|U_i \cap U_j\right)
   \implies \exists! \phi \in \mathcal C^\infty(M) \, \forall i \in I :
   \phi|U_i = \phi_i.
 \]
-In other words, we can glue functions along open submanifolds.
+In other words, we can uniquely glue functions along open submanifolds.
 
 If $\Phi\colon \set R \to \set R$ is any smooth function between the reals, 
 the composition $\Phi \circ \phi\colon M \to \set R$ is a function on $M$
 whenever $\phi\colon M \to \set R$ is a function.
 
 A manifold possesses many functions in a sense made precise by the following theorem,
-which relies essentially on the paracompactness of the manifold:
+which relies essentially on the paracompactness of the manifold (for the notion
+of the support $\supp$ of a function, see \prettyref{sec:continuity}):
 \begin{thm}
   \label{thm:paracompact_manifold}
   Every open cover $(U_i)_{i \in I}$ of a manifold $M$ has a
@@ -194,11 +201,11 @@ which relies essentially on the paracompactness of the manifold:
   $\lambda_i\colon M \to \set R$ with the following properties:
 
   \paragraph{Range}
-  For all $i \in I$ and $p \in M$, the function $\lambda_i$ satisfies $0 \leq \lambda_i(p)
+  For all $i \in I$ and $p \in M$, one has $0 \leq \lambda_i(p)
   \leq 1$.
   
   \paragraph{Support}
-  For all $i \in I$, the support of $\lambda_i$ fulfills $\supp \lambda \subseteq U_i$.
+  For all $i \in I$, one has $\supp \lambda_i \subseteq U_i$.
   
   \paragraph{Local finiteness}
   Every $p \in M$ posesses a neighborhood $G \in \mathfrak U^0(p, M)$ such that there
@@ -211,7 +218,7 @@ which relies essentially on the paracompactness of the manifold:
 The proof relies on the following lemma, which is also of independent interest:
 \begin{lem}
   \label{lem:paracompact_manifold}
-  Let $K$ be a compact subspace of a $n$-dimensional manifold $M$. For any open neighborhood
+  Let $K$ be a compact subspace of an $n$-dimensional manifold $M$. For any open neighborhood
   $G$ of $K$ in $M$, there exists a function $\phi\colon M \to \set R$ with
   \begin{align}
     \label{eq:paracompact_manifold}
@@ -225,25 +232,25 @@ The proof relies on the following lemma, which is also of independent interest:
   For any $p \in K$ choose a chart $(x, U) \in \mathfrak U^\infty(p, M)$. 
   By the openness of $x(U)$ in $\set R^n$, there exists an $\epsilon > 0$ with
   $U_\epsilon(x(p)) \subseteq x(U \cap G)$. Choose a bump function $\psi\colon \set R^n \to
-  \set R$ (see \prettyref{sec:bump_functions}) such that $\phi(u) \ge 0$ for all
-  $u \in \set R^n$, $\phi(u) = 1$ for
-  $\norm u \leq \frac 1 3 \epsilon$ and $\phi(u) = 0$ for $u \ge \frac 2 3 \epsilon$.
+  \set R$ (see \prettyref{sec:bump_functions}) such that $\psi(u) \ge 0$ for all
+  $u \in \set R^n$, $\psi(u) = 1$ for
+  $\norm u \leq \frac \epsilon 3$ and $\psi(u) = 0$ for $u \ge \frac {2 \epsilon} 3$.
   By the sheaf condition, 
   \[
     \phi_p\colon M \to \set R, q \mapsto \begin{cases}
       \psi(x(q) - x(p)) & \text{if $q \in U$}, \\
-      0 & \text{if $q \in M \setminus x^{-1}(\overline{U_{\frac 2 3 \epsilon}(x(p))}$}
+      0 & \text{if $q \in M \setminus x^{-1}(\overline{U_{\frac {2 \epsilon} 3}(x(p))})$}
     \end{cases}
   \]
-  defines a function on $M$ as $U$ and $M \setminus x^{-1}(\overline{U_{\frac 2 3 \epsilon}(x(p))}$
+  defines a function on $M$ as $U$ and $M \setminus x^{-1}(\overline{U_{\frac {2 \epsilon} 3}(x(p))})$
   form an open cover of $M$. This function has the properties
   \begin{align*}
-    \forall q \in M: f_p(q) & \ge 0, &
-    f_p(p) & > 0, &
+    \forall q \in M: \phi_p(q) & \ge 0, &
+    \phi_p(p) & > 0, &
     \supp \phi_p & \subseteq G.
   \end{align*}
   
-  The open subsets $U_p \coloneqq \Set{q \in M}{f_p(q) > 0}$ with $p \in K$ cover $K$. By
+  The open subsets $U_p \coloneqq \Set{q \in M : \phi_p(q) > 0}$ with $p \in K$ cover $K$. By
   compactness of $K$, there exists a finite subset $A \subseteq K$ such that
   $K$ is covered by $(U_p)_{p \in K}$. By construction, the function
   $\phi = \sum_{p \in A} \phi_p$
@@ -267,8 +274,8 @@ The proof relies on the following lemma, which is also of independent interest:
   \prettyref{lem:paracompact_manifold} a function
   $\phi_j \in \mathcal C^\infty(M)$ with
   \begin{align*}
-    \forall p \in M: \phi_j(p) & \ge 0,
-    \forall p \in V'_j: \phi_j(p) & > 0,
+    \forall p \in M: \phi_j(p) & \ge 0, &
+    \forall p \in V'_j: \phi_j(p) & > 0, &
     \supp \phi_j \subseteq V_j.
   \end{align*}
   By the local finiteness of the open cover $(V_j)_{j \in J}$, the sum
@@ -280,7 +287,7 @@ The proof relies on the following lemma, which is also of independent interest:
   As $(V_j)_{j \in J}$ is a refinement of the cover $(U_i)_{i \in I}$, there exists a
   map $\alpha\colon J \to I$ with $V_j \subseteq U_{\alpha(i)}$ for all $j \in J$.
   For each $i \in I$ set $J_i \coloneqq \alpha^{-1}(i)$, so $(J_i)_{i \in I}$ becomes
-  a (disjoint) partition of $I$. For all $i \in I$, set
+  a partition of $I$. For all $i \in I$, set
   $U'_i \coloneqq \bigcup_{j \in J_i} V_j \subseteq U_i$ and finally
   \[
     \lambda_i = \sum_{j \in J_i} \frac{\phi_i}{\phi}.
@@ -306,10 +313,10 @@ be extended in the following sense:
 \begin{cor}
   Let $\phi$ be a function defined on an open
   neighborhood $G$ of a point $p$
-  in a manifold $M$. Then there exists a function $\hat \phi \in \mathcal C^\infty(M)$
-  with $\supp \hat\phi \subseteq G$ and
-  such that $\hat \phi$ coincides with $\phi$ on a neighboorhood $U \subseteq G$
-  of $p$ in $M$. The function $\hat \phi$ is called an \emph{extension of $\phi$
+  in a manifold $M$. Then there exists a function $\widehat \phi \in \mathcal C^\infty(M)$
+  with $\supp \widehat\phi \subseteq G$ and
+  such that $\widehat \phi$ coincides with $\phi$ on a neighboorhood $U \subseteq G$
+  of $p$ in $M$. The function $\widehat \phi$ is called an \emph{extension of $\phi$
   by zero away from $p$}.
 \end{cor}
 
@@ -329,16 +336,15 @@ be extended in the following sense:
   which coincides with $\phi$ on $K$.
 \end{proof}
 
-In particular, we have
+For any two points $p$, $q \in M$ with $p \neq q$, there exists an open
+neighborhoods $G \in \mathfrak U^0(p, M)$ with $q \notin G$. Extending the
+constant function $\underline 1|G$ by zero away from $p$ yields a function,
+which is $1$ on $p$ and $0$ on $q$. Thus, we have
 \begin{equation}
   \label{eq:point_separation}
   \forall p, q \in M : p \neq q \implies
-  \exists \lambda \in \mathcal C^\infty(M) : \lambda(p) = 1, \lambda(q) = 0:
+  \exists \lambda \in \mathcal C^\infty(M) : \lambda(p) = 1, \lambda(q) = 0.
 \end{equation}
-By the Hausdorff
-condition, there exist an open neighborhoods $G \in \mathfrak U^0(p, M)$
-with $q \notin G$. Then $\lambda$ can be chosen as an extension of the constant
-function $\underline 1|G$ by zero away from $p$.
 
 If we denote by $p^*$ for all $p \in M$ the algebra homomorphism
 \begin{equation}
@@ -347,18 +353,18 @@ If we denote by $p^*$ for all $p \in M$ the algebra homomorphism
 we can reformulate \prettyref{eq:point_separation} by saying that the map $p \mapsto p^*$ is injective,
 that is the algebra of functions \emph{separate points}. The algebra of functions
 on spacetime is therefore a full set of observables: for any two distinct events
-there is a function that takes different values on the events.
+there is a function that takes different values on both events.
 
 \section{Morphisms}
 \label{sec:morphisms}
 
 A physical body traces out a curve of events in spacetime $M$, namely those events
-where an observer meeds the physical body, its \emph{world line}. If the physical
+where an observer meets the physical body, its \emph{world line}. If the physical
 body carries a clock with it, each point of its world line is parametrized by
 a scalar, the clock's time measured at that event. In other words, the path of
-the physical body in spacetime together with its defines a map $J \to M$, 
+the physical body in spacetime together with its clock defines a map $J \to M$, 
 where $J$ is an (open) interval. Both the domain and the target of this map is a 
-manifold, where $J$ is viewed as an open submanifold of the reals. The physical
+manifold, where $J$ is viewed as an open submanifold of the reals. A physical
 body does not jump through spacetime, so the map will be continuous.
 In order to employ analytical methods, it is sensible to assume moreover that
 this map is a morphism according to the following definition:
@@ -375,9 +381,9 @@ this map is a morphism according to the following definition:
 \end{dfn}
 
 In accordance with our above wording, a \emph{curve $\alpha\colon J \to M$} is a
-morphism where $J$ is an open interval viewed as a submanifold of $\set R$, so
-the world line of a physical body becomes a curve in this sense
-by endowing the physical body with a clock.
+morphism where $J$ is an open interval viewed as a submanifold of $\set R$. Thus
+a world line of a physical body becomes a curve in this sense
+by endowing it with a clock.
 
 A map $f\colon M \to N$ between manifolds is a morphism if and only if
 for all functions $\psi \in \mathcal C^\infty(N)$ the \emph{pullback of $\psi$
@@ -385,7 +391,11 @@ by $f$}, given by
 \begin{equation}
   f^{-1}\psi\colon M \to \set R, p \mapsto \psi(f(p)),
 \end{equation}
-is a function on $M$.
+is a function on $M$. (The pullback itself is a map
+\begin{equation}
+  f^{-1}\colon \mathcal C^\infty(N) \to \mathcal C^\infty(M)
+\end{equation}
+of algebras.)
 
 Thus, a map $\phi\colon M \to \set R$ defined on a manifold $M$ is a
 morphism if and only if it is a function. Further, a map $f\colon G \to H$ between

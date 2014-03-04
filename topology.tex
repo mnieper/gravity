@@ -51,7 +51,7 @@ smallest closed subset of $X$ containing $Y$, that is
 
 Let $Y$ be any subset of the underlying set of $X$. Set
 \[
-  \mathfrak U^0(Y) \coloneqq \Set{Y \cap U}{U \in \mathfrak U^0(X)}
+  \mathfrak U^0(Y) \coloneqq \Set{Y \cap U: U \in \mathfrak U^0(X)}
 \]
 This is a topology, the \emph{subspace topology}. Endowed with this topology,
 $Y$ canonically becomes a topological space itself. Topological spaces of this form
@@ -63,21 +63,22 @@ The cartesian space $\set R^n$ is canonically a topological space with the
 topology defined by
 \begin{equation}
   \label{eq:cartesian_topology}
-  \mathfrak U^0(\set R^n) = \Set{U \subseteq \set R^n}{\forall p \in U \,
+  \mathfrak U^0(\set R^n) = \Set{U \subseteq \set R^n : \forall p \in U \,
   \exists \epsilon \in \set R^+: U_\epsilon(p) \subseteq U},
 \end{equation}
 where
 \begin{equation}
-  U_\epsilon(p) \coloneqq \Set{q \in \set R^n}{\norm{q - p} < \epsilon}
+  U_\epsilon(p) \coloneqq \Set{q \in \set R^n : \norm{q - p} < \epsilon}
 \end{equation}
 for an $\epsilon > 0$ is the standard \emph{$\epsilon$-neighborhood}. Its 
 closure under the so-defined topology is given by
 \begin{equation}
   \overline U_{\epsilon(p)} = B_\epsilon(p) \coloneqq
-  \Set{q \in \set R^n}{\norm {q - p} \leq \epsilon}.
+  \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
 \end{equation}
 
 \section{Continuous maps}
+\label{sec:continuity}
 
 \begin{dfn}
   A \emph{continuous map $f\colon X \to Y$ from an topological space $X$ to
@@ -90,12 +91,12 @@ closure under the so-defined topology is given by
 Let $X$ be a topological space and let $\phi\colon X \to \set R$ be a continuous map.
 The \emph{support $\supp \phi$ of $\phi$} is the closed subset
 \[
-  \Set{p \in X}{\forall G \in \mathfrak U(p, X): \phi|G \not\equiv 0}.
+  \Set{p \in X : \forall G \in \mathfrak U(p, X): \phi|G \not\equiv 0}.
 \]
 It is given by
 \begin{equation}
   \label{eq:support}
-  \supp \phi = \overline{\Set{p \in X}{\phi(p) \neq 0}}.
+  \supp \phi = \overline{\Set{p \in X : \phi(p) \neq 0}}.
 \end{equation}
 
 \section{Hausdorff spaces}
@@ -161,7 +162,7 @@ subset of a compact space is again compact.
 
 \begin{thm}
   A subset $K$ of cartesian space $\set R^n$ is compact if and only if it is closed
-  and there exists an $R \in \set R^+$ such that $K \subseteq \Set{p \in \set R^n}{\norm p \leq R}$.
+  and there exists an $R \in \set R^+$ such that $K \subseteq \Set{p \in \set R^n : \norm p \leq R}$.
 \end{thm}
 
 The latter condition on $K$ says that $K$ is \emph{bounded}.
@@ -229,7 +230,7 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
   Show that the closure of a standard $\epsilon$-neighborhood in $\set R^n$
   for the canonical topology is given by
   \begin{equation}
-    \overline U_{\epsilon(p)} = \Set{q \in \set R^n}{\norm {q - p} \leq \epsilon}.
+    \overline U_{\epsilon(p)} = \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
   \end{equation}
 \end{xca}
 
