@@ -1,33 +1,29 @@
-\documentclass{book}
+\documentclass{report}
 
-\includeonly{}
+\includeonly{preface,history,notations}
 
 \input{preamble}
 
 \title{General Relativity and Einstein--Cartan Theory}
 \author{Marc A. Nieper-Wi\ss kirchen}
+\date{\today}
 
 \begin{document}
 
-	\frontmatter
-
-	\maketitle
+  \maketitle
 	
-	\include{preface}
-	\include{history}
-	\include{notations}
+  \include{preface}
+  \include{history}
+  \include{notations}
+	
 	\tableofcontents
   
-	\mainmatter
-
-	\include{spacetime}
+  \include{spacetime}
   \include{maxwell}
   
 	\appendix
 	
-	\include{topology}
-	\include{analysis}
+  \include{topology}
+  \include{analysis}
 	
-	\backmatter
-
 \end{document}
