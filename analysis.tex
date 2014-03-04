@@ -16,3 +16,25 @@
 
 A function as in the theorem is called a \emph{bump function}.
 
+\section{Hadamard's lemma}
+
+A subset $U$ of $n$-dimensional Euclidean space $\set R^n$ is \emph{star-shaped with
+respect to a point $p \in U$} if
+\[
+  \forall x \in U \forall 0 \leq t \leq 1 :
+  (1 - t) \, a + t \, x \in U.
+\]
+Any neighborhood of a point $p \in \set R^n$ contains an open neighborhood
+star-shaped with respect to the point $p$ as the standard $\epsilon$-neighborhoods
+are star-shaped with respect to their center (in fact, with respect to any point
+of their interior).
+
+\begin{thm}
+  \label{thm:hadamard}
+  Let $\phi$ be a smooth function defined on an open subset $U$ of $n$-dimensional
+  Euclidean space $\set R^n$ that is star-shaped with respect to a point $a \in U$.
+  Then there exist smooth functions $g_1$, \dots, $g_n$ on $U$ such that
+  \[
+    \forall x \in U: \phi(x) = \phi(a) + \sum_{i = 1}^n (x_i - a_i) \, g_i(x).
+  \]
+\end{thm}

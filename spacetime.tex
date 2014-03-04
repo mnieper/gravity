@@ -316,9 +316,10 @@ be extended in the following sense:
   in a manifold $M$. Then there exists a function $\widehat \phi \in \mathcal C^\infty(M)$
   with $\supp \widehat\phi \subseteq G$ and
   such that $\widehat \phi$ coincides with $\phi$ on a neighboorhood $U \subseteq G$
-  of $p$ in $M$. The function $\widehat \phi$ is called an \emph{extension of $\phi$
-  by zero away from $p$}.
+  of $p$ in $M$.
 \end{cor}
+The function $\widehat \phi$ is called an \emph{extension of $\phi$
+by zero away from $p$}.
 
 \begin{proof}
   By local compactness (see \prettyref{prop:locally_compact}),
@@ -505,32 +506,91 @@ in a neighborhood of $p$:
   \]
 \end{proof}
 
+Given a vector $v$ at $p$ and a function $\phi$ defined in a neighborhood $G$
+of $p$, we can therefore speak of the derivative $v \cdot \phi$ of $\phi$ along
+$v$: Let $\widehat\phi$ be any extension of $\phi$ by zero away from $p$. As
+$\widehat\phi$ and $\phi$ coincide in a neighborhood of $p$, the derivative
+\[
+  v \cdot \phi \coloneqq v \cdot \widehat\phi
+\]
+does not depend on the choice of $\widehat\phi$.
+
 With this result we can completely determine the structure of the tangent space
 $\Tang_p M$. In fact, we have:
 
 \begin{thm}
+  \label{thm:coordinate_basis}
   Let $M$ be an $n$-dimensional manifold. For each point $p \in M$, the tangent
   space $\Tang_p M$ is an $n$-dimensional vector space. More precisely, given
   a chart $(x, U) \in \mathfrak U^\infty(p, M)$, a basis of $\Tang_p M$ is given
   by the vectors
-  \[
+  \begin{equation}
+    \label{eq:coordinate_basis}
     \frac{\partial}{\partial x_i}|_p\colon \mathcal C^\infty(M)
-    \to \set R, f \mapsto \frac{\partial \left((f|U) \circ x^{-1}\right)}{\partial x_i}(x(p))
+    \to \set R, f \mapsto \delta_i ((f|U) \circ x^{-1}) (x(p))
     \eqqcolon \frac{\partial f}{\partial x_i}(p),  
-  \]
+  \end{equation}
   where $i = 1, \dotsc, n$. If $(y, V) \in \mathfrak U^\infty(p, M)$ is another
   chart around $p$, the change of basis is given by
-  \[
+  \begin{equation}
+    \label{eq:basis_change}
     \frac{\partial}{\partial x_i}|_p =
-    \sum_{j = 1}^n \frac{\left(\partial (y_j|V) \circ x^{-1}\right)}{\partial x_i}(x(p))
+    \sum_{j = 1}^n \partial_i ((y_j|U) \circ x^{-1}) (x(p))
     \, \frac{\partial}{\partial y_j}|_p
     =
     \sum_{j = 1}^n \frac{\partial y_j}{\partial x_i}(p) \, 
     \frac{\partial}{\partial y_j}|_p.
-  \]  
+  \end{equation}
 \end{thm}
 The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
-\emph{induced basis of $\Tang_p M$ by the chart $x$}.
+\emph{chart's $x$ induced basis of $\Tang_p M$}.
+
+\begin{proof}
+  To show that \prettyref{eq:coordinate_basis} defines a vector at $p$ is
+  straight-forward and follows from the linearity and product rule of the
+  partial differentiation in calculus.
+  
+  The linear independence of the $n$ vectors defined by
+  \prettyref{eq:coordinate_basis} follows directly from the following
+  observation: For any $n$-tupel $(a_1, \dotsc, a_n)$ of
+  scalars with $\sum_{i = 1}^n a_i \, \frac\partial{\partial x_i}|_p = 0$, one
+  calculates
+  \[
+    \begin{split}
+      0 & = \left(\sum_{i = 1}^n a_i \, \frac\partial{\partial x_i}|_p\right) \cdot x_j
+      = \sum_{i = 1}^n a_i \, \partial_i (x_j \circ x^{-1}) (x(p)) \\
+      & = \sum_{i = 1}^n a_i \, \updelta_{ij}
+      = a_j
+    \end{split}
+  \]
+  for all $i = 1$, \dots, $n$.
+  
+  To show that the $n$ vectors defined by \prettyref{eq:coordinate_basis} span
+  the tangent space $\mathrm T_p M$ at $p$, let $\phi$ be any function on $M$. By
+  \prettyref{thm:hadamard}, there exist functions $g_1$, \dots, $g_n$ defined
+  in a neighborhood of $p$ in $U$ such that
+  \[
+    \phi = \phi(p) + \sum_{i = 1}^n (x_i - x_i(p)) \, g_i(u)
+  \]
+  in a neighborhood of $p$ in $\set R^n$. Given any vector $v \in
+  \mathrm T_p M$, we thus have
+  \[
+    \begin{split}
+      v \cdot \phi & = v \cdot (\phi(p) + \sum_{i = 1}^n (x_i - x_i(p)) \, g_i) \\
+      & = \sum_{i = 1}^n \left((v \cdot (x_i - x_i(p))) \, g_i(p) + (x_i(p) - x_i(p)) \, (v \cdot g_i)\right)
+      = \sum_{i = 1}^n (v \cdot x_i) \, g_i(p).
+    \end{split}
+  \]
+  In other words, $v \cdot \phi = \sum_{j = 1}^n (v \cdot x_j) \, \frac\partial{\partial x_j}|_p \cdot \phi$
+  for any vector $v \in \mathrm T_p M$. Thus
+  \[
+    \forall v \in \mathrm T_p M: v = \sum_{i = 1}^n (v \cdot x_j) \, \frac\partial{\partial x_i}|_p,
+  \] 
+  which is a linear combination of the induced basis.
+  
+  As this formula also works for the coordinate system $(y, V)$, we get
+  \prettyref{eq:basis_change} for $v = \frac\partial{\partial x_i}|_p$.
+\end{proof}
 
 
 % TODO Pushforward of vectors;
