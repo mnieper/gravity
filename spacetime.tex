@@ -592,9 +592,98 @@ The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
   \prettyref{eq:basis_change} for $v = \frac\partial{\partial x_i}|_p$.
 \end{proof}
 
+The theorem immediately gives the tangent space at a point $p$ of an open
+submanifold $U$ of $n$-dimensional space: It is spanned by the $n$ linearly 
+independent vectors $\partial_1(p)$, \dots, $\partial_n(p)$ where
+\[
+  \partial_i(p) \cdot \phi \coloneqq (\partial_i \phi) (p)
+\]
+for all $i \in \Set{1, \dotsc, n}$. Thus, there is a canonical isomorphism
+\[
+  \set R^n \to \mathrm T_p M,
+  (u_1, \dotsc, u_n) \mapsto \sum_{i = 1}^n u_i \, \partial_i(p).
+\]
+whose inverse is denoted by
+\[
+  \diff_p x\colon \mathrm T_p M \to \set R^n.
+\]
 
-% TODO Pushforward of vectors;
-% TODO Show that T_p U = T_p M by locality.
+By the very definition of a vector, we can differentiate functions on a 
+manifold, that is morphisms to the manifold $\set R$ along a vector. What is
+yet missing is the notion of a derivate of an arbitrary morphism along a vector.
+In other words, we are missing a definition of how a morphism maps a vector on
+the domain manifold to a vector on the target manifold. This definition is
+straight-forward:
+
+Let $f\colon M \to N$ be a morphism of manifolds. For a point $p \in M$, let
+$v \in \mathrm T_p M$. The map
+\[
+  f_* v\colon \mathcal C^\infty(N) \to \mathcal C^\infty(N), \psi \mapsto
+  v \cdot (\psi \circ f)
+\]
+fulfills the linearity and constant axioms and a Leibniz rule as follows
+\[
+  (f_* v) \cdot (\psi \, \psi') = (v \cdot \phi) \, \psi(f(p)) +
+    \phi(f(p)) \, (v \cdot \psi).
+\]
+In other words, $f_* v$ defines a vector at $f(p)$ defined by the equation
+\[
+  \forall \psi \in \mathcal C^\infty(N): (f_* v) \cdot \psi = v \cdot (f^{-1} \psi).
+\]
+The vector $f_* v$ is called the \emph{push-forward of $v$ along $f$}. The
+induced linear map on the tangent spaces is denoted by
+\[
+  \mathrm T_p f\colon \mathrm T_p M \to \mathrm T_p N, v \mapsto f_* v
+\]
+and called the \emph{tangent map of $f$ at $p$}. That the push-forward
+indeed generalizes the derivative of functions follows from the observation that
+\[
+  \phi_* v = (v \cdot \phi) \, \delta(\phi(p))
+\]
+for any function $\phi \in \mathcal C^\infty(M)$ viewed as a morphism
+$\phi\colon M \to \set R$.
+
+The tangent map of the identity morphism is the identity map, the tangent map
+of a composition is the composition of the tangent maps. More precisely, we
+have
+\[
+  \begin{aligned}
+    \forall v \in \Tang_p M: &&
+    (\id_M)_* v & v, &
+    (g \circ f)_* v & = g_* (f_* v),
+  \end{aligned}
+\]
+where $f\colon M \to N$ and $g\colon N \to P$ are two composable morphisms
+between manifolds. This observation can be subsumed by saying that the
+tangent space is a function from the category of pointed manifolds to the
+category of finite-dimensional vector spaces. 
+
+Given a curve $\alpha\colon J \to M$ and a point $t \in J$, which we may view
+as a coordinate of time, we can differentiate the curve along $\partial(t)$.
+The vector
+\[
+  \dot\alpha(t) \coloneqq \alpha_* \partial(t)
+\]
+is called the \emph{derivative} or \emph{velocity of the curve $\alpha$ at $t$}.
+The statement about the functoriality of the tangent space can be viewed as the
+chain-rule in disguise: in the one-dimensional case we have
+\[
+  (\alpha \circ c)\spdot(s) = \alpha_* c_* \partial(s)
+  = \alpha_* (c'(s) \, \delta(c(s)))
+  = c'(s) \, \alpha_* \delta(c(s)) = c'(s) \dot\alpha(c(s)),
+\]
+where $c\colon I \to J$ is any differential map and $s$ a point in the open
+subset $I$ of $\set R$.
+
+Given an observer $\alpha\colon J \to M$ in space-time $M$ and a clock reading
+$t \in J$, we get two quantities, namely the event $p \coloneqq \alpha(t)$ and the
+derivative $u \coloneqq \dot\alpha(t)$, which is a vector at $p$. In fact, $u$
+is all what we need because a vector knows at which point it is attached to.
+In the reference frame of the observer $\alpha$, the observer does not move spatially.
+In other words, $u$ is a vector pointing in the direction of the observers
+future at the event $p$. The length of the vector $u$ can be seen as defining
+the observer's unit of time. We thus define an \emph{instantaneous observer}
+as just a non-vanishing vector $u$ at any point in space-time.
 
 \section{Tensors}
 
@@ -671,3 +760,42 @@ The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
   $U$ of a manifold $M$ is in fact a morphism.
 \end{xca}
 
+\begin{xca}
+  Let $f\colon M \to N$ be a morphism between manifolds and $p \in M$ a point.
+  Prove that
+  \[
+    f_* v\colon \mathcal C^\infty(N) \to \mathcal C^\infty(N),
+    \psi \mapsto v \cdot (\psi \circ f)
+  \]
+  in fact defines a vector at $f(p)$.
+\end{xca}
+
+\begin{xca}
+  Let $f\colon M \to N$ be a morphism between manifolds and $p \in M$ a point.
+  Proof that the tangent map at $p$ is a linear map
+  \[
+    \mathrm T_f M\colon \mathrm T_p M \to \mathrm T_{f(p)} N, v \mapsto f_* v.
+  \]  
+\end{xca}
+
+\begin{xca}
+  Let $M$ be a manifold and $p \in M$ be a point. Show that
+  \[
+    \forall \phi \in \mathcal C^\infty(M):
+    \phi_* v = (v \cdot \phi) \, \delta(\phi(p)).
+  \]
+  for all $v \in \mathrm T_p M$.
+\end{xca}
+
+\begin{xca}
+  Let $M$ be a manifold and $p \in M$ be a point. Show that
+  \[
+    \begin{aligned}
+      \forall v \in \Tang_p M: &&
+      (\id_M)_* v & v, &
+      (g \circ f)_* v & = g_* (f_* v),
+    \end{aligned}
+  \]
+  where $f\colon M \to N$ and $g\colon N \to P$ are two (composable) morphisms
+  between manifolds.
+\end{xca}
