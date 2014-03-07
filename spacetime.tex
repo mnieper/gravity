@@ -406,13 +406,58 @@ map in the sense of calculus.
 The identity $\id_M\colon M \to M$ of $M$ is a morphism. The composition $g \circ f$
 of two morphisms $f\colon M \to N$ and $g\colon N \to P$ between manifolds is
 again a morphism. The manifolds together with the morphisms between them thus
-form a \emph{category}.
+form a \emph{category}. A morphism $f\colon M \to N$ between manifolds that
+is bijective and whose inverse $f^{-1}\colon N \to M$ is again a morphism is
+called a \emph{diffeomorphism between $M$ and $N$}. In a categorical sense,
+diffeomorphisms are exactly the isomorphisms.
 
 The \emph{inclusion $i\colon U \to M, p \mapsto p$} of an open submanifold $U$
 of $M$ is a morphism. Thus, the restriction $f|U = f \circ i$ of a morphism
 $f\colon M \to N$ to $U$ is again a morphism.
 
+\section{Product manifolds}
+
+When investigating possible universe, that is possible spacetimes, we will have
+to construct manifolds. One important construction, which constructs a manifold
+out of simpler ones is the product. Let $M$ and $N$ be two manifolds of dimensions
+$m$ and $n$, respectively. Given any chart $(x, U) \in \mathfrak U^\infty(M)$
+and any chart $(y, V) \in \mathfrak U^\infty(N)$, the map
+\[
+  x \times y\colon U \times V \to \set R^{m + n}, (p, q) \mapsto (x(p), y(q))
+\]
+defines an $(m + n)$-dimensional chart on the cartesian product
+\[
+  M \times N \coloneqq \Set{(p, q) : p \in M, q \in N}.
+\]
+
+Let $\mathfrak U^\infty(M \times N)$ be the unique maximal atlas of $M \times N$
+that contains the atlas
+\[
+  \Set{(x \times y, U \times V): (x, U) \in \mathfrak U^\infty(M),
+    (y, V) \in \mathfrak U^\infty(N)}.
+\]
+Then $M \times N$ becomes an $(m + n)$-manifold, whose underlying topological 
+space is the product topological space of $M$ and $N$.
+
+\begin{dfn}
+  The manifold $M \times N$ is called the \emph{product of the manifolds $M$
+  and $N$}.
+\end{dfn}
+
+The two canonical projection maps $\pr_1\colon M \times N \to M, (p, q) \mapsto
+p$ and $\pr_2\colon M \times N \to N, (p, q) \mapsto q$ are morphisms.
+
+As simple example of a product manifold is given by $\set R^n$. More precisely,
+for any $p$, $q$ with $p + q = n$, the map
+\[
+  \set R^p \times \set R^q \to \set R^n, ((u_1, \dotsc, u_p), (v_1, \dotsc, v_q))
+  \mapsto (u_1, \dotsc, u_p, v_1, \dotsc, v_q)
+\]
+is a diffeomorphism. (Here, the left hand side is, of course, endowed with the
+structure of a product manifold.)
+
 \section{Vectors}
+% XXX Put this and the following in a separate chapter.
 \label{sec:vectors}
 
 By an \emph{observer}, we mean a curve $\alpha\colon J \to M$ in spacetime $M$,
@@ -857,10 +902,106 @@ type $(1, 2)$.
 
 \section{Vector fields}
 
-% velocity field (attached to many points)
+As a basic example of a vector on an $n$-dimensional manifold $M$ we gave the velocity vector
+of a fluid modelled on $M$ at a point $p$. Often, however, one is not interested
+in a single velocity vector but at the totality of all velocity vectors at all
+points of $M$. This yields to the following definition:
 
-% integration
+\begin{dfn}
+  A \emph{vector field $X$} on a manifold $M$ is a family $(X(p))_{p \in M}$
+  of vectors on $M$ such that $X(p) \in \Tang_p M$ for all $p \in M$ and such
+  that
+  \[
+    X \cdot \phi\colon p \mapsto X(p) \cdot \phi
+  \]
+  is a (differentiable) function on $M$ for any function $\phi \in \mathcal
+  C^\infty(M)$.
+\end{dfn}
+The latter condition ensures that the vectors $X(p)$ vary smoothly when $p$ is
+varied. In general, the velocitites at all points of a fluid are thus modelled
+by such a vector field. The set of vector fields is denoted by $\mathfrak X(M)$.
+This set becomes an $\mathcal C^\infty(M)$-module by defining addition and
+scalar multiplication point-wise.
 
+Every chart $(x, U)$ on $M$ induces $n$ vector fields on the open submanifold
+$U$, namely
+\[
+  \frac{\partial}{\partial x_i}\colon p \mapsto \frac{\partial}{\partial x_i}|_p.
+\]
+for $i = 1$, \dots, $n$, which form a basis of $\mathrm T_p M$ for all $p \in U$.
+Given any system $\phi_1$, \dots, $\phi_n \in \mathcal C^\infty(U)$ of functions
+on $U$, the linear combination $\sum_{i = 1}^n \phi_i \, \frac{\partial}{\partial x_i}$
+is a vector field on $U$. On the other hand, every vector field on $U$ is of this
+form.
+
+If a test particle is put into the fluid on $M$, it will move with the fluid.
+The test particle will trace out a curve $\alpha\colon J \to M$ on $M$ such that
+the particles velocity will coincide with the fluids velocity at the point of
+the particle at all times:
+\[
+  \forall t \in J: \dot\alpha(t) = X(\alpha(t))
+\]
+where $X$ is the vector field describing the fluid's velocity with respect to
+a chosen unit of time. A curve for which $\dot \alpha = X \circ \alpha$ holds
+for a given vector field $X$ on a manifold $M$ is called an \emph{integral
+curve of $X$}. It is the curve that is traced out by following the ``flow'' of
+the vector field. The question of existence of integral curves is handled by
+the following theorem:
+
+\begin{thm}
+  Let $M$ be a manifold and $X \in \mathfrak X(M)$.
+  \paragraph{Existence of maximal integral curves}
+  For each pair $(t_0, p) \in \set R \times M$ there exists an integral curve
+  $\alpha\colon J \to M$ with $\alpha(t_0) = p$ that is maximal and unique in the
+  following sense: Is $\widetilde\alpha\colon \widetilde J \to M$ any integral
+  curve on $X$ with $\widetilde \alpha(t_0) = p$, then $\widetilde J \subseteq
+  J$ and $\alpha|\widetilde J = \widetilde \alpha$. The integral curve $\alpha$
+  is the \emph{maximal integral curve of $X$ to the initial condition $(t_0, p)$}.
+  The maximal integral curve of $X$ to the initial condition $(0, p)$ is denoted
+  by $\alpha_p \coloneqq \alpha_p^X\colon J_p \to M$.
+  
+  \paragraph{Translation invariance of integral curves}
+  If $\alpha\colon J \to M$ is any integral curve on $M$ and $s \in \set R$, then
+  $\beta\colon -s + J \to M, t \mapsto \alpha(t + s)$ is an integral curve.
+  
+  \paragraph{Maximal flow}
+  The set
+  \[
+    D \coloneqq D^X \coloneqq \bigcup_{p \in M} (J_p \times \Set p)
+  \]
+  is an open neighborhood of $\Set 0 \times M$ in $\set R \times M$ and
+  \[
+    \Phi \coloneqq \Phi^X\colon D \to M, (t, p) \mapsto \alpha_p(t)
+  \]
+  is a morphism, which is called the \emph{maximal flow of $X$}.
+
+  \paragraph{Local $1$-parameter group}
+  For $t \in \set R$, let $D_t$ be the open subset
+  \[ 
+    D_t \coloneqq \Set{p \in M : (t, p) \in D} \subseteq M.
+  \]
+  The morphism
+  \[
+    \Phi_t \coloneqq \Phi_t^X\colon D_t \to M, p \mapsto \Phi(t, p)
+  \]
+  is a diffeomorphism onto $D_{-t}$. (In particular $D_{-t} \neq \emptyset$
+  whenever $D_t \neq \emptyset$.)
+  One has $D_0 = M$ and $\Phi_0 = \id_M$. Moreover one has
+  \begin{gather*}
+    \forall t, s \in \set R: 0 \leq t < s \implies D_s \subseteq D_t,\\
+    M = \bigcup_{t \in \set R_+} D_t, \\
+    \intertext{and}
+    \forall t, s \in \set R, p \in D_s:
+      \left\{\begin{gathered}
+        \Phi_s(p) \in D_t \iff p \in D_{t + s},\\
+        p \in D_{t + s} \implies \Phi_t \circ \Phi_s(p) = \Phi_{t + s}(p).
+      \end{gathered}\right.
+  \end{gather*}
+  The family $(\Phi^X_t)_{t \in \set R}$ is the \emph{dynamical system generated
+  by $X$}.
+\end{thm}
+
+% \begin{proof} \end{proof}
 % lie bracket
 
 \section{Tensor fields}
@@ -930,8 +1071,29 @@ type $(1, 2)$.
 \end{xca}
 
 \begin{xca}
-  Proof that the inclusion morphism $i\colon U \to M$ for any open submanifold
+  Prove that the inclusion morphism $i\colon U \to M$ for any open submanifold
   $U$ of a manifold $M$ is in fact a morphism.
+\end{xca}
+
+\begin{xca}
+  Let $M$ and $N$ be two manifolds. Show that 
+  \[
+    \Set{(x \times y, U \times V): (x, U) \in \mathfrak U^\infty(M),
+      (y, V) \in \mathfrak U^\infty(N)}.
+  \]
+  is an atlas of the cartesian product $M \times N$.
+\end{xca}
+
+\begin{xca}
+  Show that the underlying topological space of the product $M \times N$ of
+  two manifolds $M$ and $N$ coincides of the topological product of the topological 
+  spaces underlying $M$ and $N$.
+\end{xca}
+
+\begin{xca}
+  Prove that the projections $\pr_1\colon M \times N \to M$ and $\pr_2\colon
+  M \times N \to N$ defined on a product manifold $M \times N$ are in fact
+  morphisms.
 \end{xca}
 
 \begin{xca}
@@ -1005,3 +1167,11 @@ type $(1, 2)$.
   where $v_i \coloneqq v^*(\diff_p x_i)$ for $i \in \Set{1, \dotsc, n}$.
 \end{xca}
 
+\begin{xca}
+  Let $(x, U)$ be a chart of an $n$-dimensional manifold $M$. Show that every
+  vector field $X \in \mathfrak X(U)$ uniquely defines a system $\phi_1$, \dots,
+  $\phi_n \in \mathcal C^\infty(U)$ such that
+  \[
+    X = \sum_{i = 1}^n \phi_i \, \frac{\partial}{\partial x_i}.
+  \]
+\end{xca}

@@ -67,15 +67,29 @@ topology defined by
   \exists \epsilon \in \set R^+: U_\epsilon(p) \subseteq U},
 \end{equation}
 where
-\begin{equation}
+\[
   U_\epsilon(p) \coloneqq \Set{q \in \set R^n : \norm{q - p} < \epsilon}
-\end{equation}
+\]
 for an $\epsilon > 0$ is the standard \emph{$\epsilon$-neighborhood}. Its 
 closure under the so-defined topology is given by
-\begin{equation}
+\[
   \overline U_{\epsilon(p)} = B_\epsilon(p) \coloneqq
   \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
+\]
+
+Given a pair of topological space $X$ and $Y$, the product
+$X \times Y = \Set{(x, y) : x \in X, y \in Y}$ carries a canonical topology
+defined by
+\begin{equation}
+  \label{eq:product_topology}
+  \mathfrak U^0(X \times Y) = \Set{W \subseteq X \times Y \forall (x, y) \in W \,
+  \exists U \in \mathfrak U^0(x, X), V \in \mathfrak U^0(y, Y):
+  U \times V \subseteq W}.
 \end{equation}
+Endowed with this topology, $X \times Y$ is called the \emph{product space} or
+\emph{topological product of $X$ and $Y$}. If $A$ is a subspace of $X$ and
+$B$ is a subspace of $Y$, the subspace $A \times B$ of $X \times Y$ carries the
+product topology of the topological product between $A$ and $B$.
 
 \section{Continuous maps}
 \label{sec:continuity}
@@ -99,6 +113,10 @@ It is given by
   \supp \phi = \overline{\Set{p \in X : \phi(p) \neq 0}}.
 \end{equation}
 
+If $X$ and $Y$ are two topological spaces, the two projection maps
+$\pr_1\colon X \times Y \to X, (x, y) \mapsto x$ and
+$\pr_2\colon X \times Y \to Y, (x, y) \mapsto y$ are continuous.
+
 \section{Hausdorff spaces}
 \label{sec:hausdorff_spaces}
 
@@ -108,7 +126,8 @@ It is given by
   of $p$ and $H$ of $q$, respectively, such that $G \cap H = \emptyset$.
 \end{dfn}
 A subspace of a Hausdorff space is again a Hausdorff space. Any finite subset of
-a Hausdorff space is a closed subset.
+a Hausdorff space is a closed subset. The topological product of two Hausdorff
+spaces is again a Hausdorff space.
 
 Cartesian space $\set R^n$ is an example for a Hausdorff space.
 
@@ -158,7 +177,8 @@ if it is a compact space when endowed with the subspace topology. It is \emph{re
 compact in $X$} if its closure in $X$ is compact.
 
 A compact subspace of a Hausdorff space $X$ is always a closed subset of $X$. A closed
-subset of a compact space is again compact.
+subset of a compact space is again compact. The product of two compact spaces
+is again a compact space.
 
 \begin{thm}
   A subset $K$ of cartesian space $\set R^n$ is compact if and only if it is closed
@@ -184,6 +204,9 @@ which is relatively compact in $X$.
   contains a compact neighborhood $K \in \mathfrak U(p, X)$.
 \end{prop}
 
+The product of two locally compact Hausdorff spaces is again a locally compact
+Hausdorff space.
+
 \section{Paracompact Hausdorff spaces}
 \label{sec:paracompactness}
 
@@ -202,6 +225,11 @@ is an open cover $(V_j)_{j \in J}$ of $X$ such that
   \label{prop:paracompact_spaces}
   A paracompact Hausdorff space is normal.
 \end{prop}
+
+\begin{thm}
+  The topological product of two locally compact paracompact Hausdorff spaces
+  is again a (locally compact) paracompact Hausdorff space. 
+\end{thm}
 
 Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
 
@@ -227,11 +255,22 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
 \end{xca}
 
 \begin{xca}
+  Show that \prettyref{eq:product_topology} defines a topology on the cartesian
+  product of the topological spaces $X$ and $Y$.
+\end{xca}
+
+\begin{xca}
   Show that the closure of a standard $\epsilon$-neighborhood in $\set R^n$
   for the canonical topology is given by
   \begin{equation}
     \overline U_{\epsilon(p)} = \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
   \end{equation}
+\end{xca}
+
+\begin{xca}
+  Let $A$ and $B$ be subspaces of the topological spaces $X$ and $Y$, respectively.
+  Show that the subspace $A \times B$ of $X \times Y$ carries the
+  product topology of the topological product between $A$ and $B$.
 \end{xca}
 
 \begin{xca}
@@ -241,11 +280,21 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
 \end{xca}
 
 \begin{xca}
+  Let $X$ and $Y$ be two topological spaces. Show that the two projection maps
+  $\pr_1$ and $\pr_2$ defined on the topological product $X \times Y$ are
+  continuous.
+\end{xca}
+
+\begin{xca}
   Prove that a subspace of a Hausdorff space is again a Hausdorff space.
 \end{xca}
 
 \begin{xca}
   Prove that a finite subset of a Hausdorff space is a closed subset.
+\end{xca}
+
+\begin{xca}
+  Prove that a product of two Hausdorff spaces is again a Hausdorff space.
 \end{xca}
 
 \begin{xca}
@@ -258,9 +307,18 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
 \end{xca}
 
 \begin{xca}
+  Prove that the product of two compact spaces is again a compact space.
+\end{xca}
+
+\begin{xca}
   Prove that a Hausdorff space $X$ is locally compact if and only if every point
   $p \in X$ possesses an open neighborhood $U \in \mathfrak U(p, X)$ such that
   $U$ is relatively compact in $X$:
+\end{xca}
+
+\begin{xca}
+  Prove that the product of two locally compact Hausdorff spaces is again a
+  locally compact Hausdorff space.
 \end{xca}
 
 \begin{xca}
