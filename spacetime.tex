@@ -687,7 +687,181 @@ as just a non-vanishing vector $u$ at any point in space-time.
 
 \section{Tensors}
 
+A vector $v$ at a point $p$ on a manifold $M$ can be seen as a quantity attached to
+that point $p$. For example, $v$ could be the velocity of a fluid modelled on
+$M$ at the point $p$. Some scalar quantities can also be seen as attached to a point;
+for example, the temperature of the fluid at the point $p$. However, not all
+quantities attached to points are to be modelled by a scalar or a vector.
+
+As an example, consider a (non-conservative) force field in space, which is
+given by a manifold $M$, the set of points in space. The force field is defined
+by the work done when a test particle moves through space. If the test particle
+is moved infinitesimally from $p$ to $p + \diff p$, an infinitesimal amount
+of work $\diff W(p)$ is done, which is a scalar quantity after we have fixed a
+unit of work. In other words,
+the force field (or, equivalently, the work done by the force field) at a point
+$p \in M$ is given by a map
+\[
+  \diff W(p)\colon \mathrm T_p M \to \set R,
+\] 
+which associates to each vector $v$ at $p$ the work done when the particle moves
+along this vector. By basic principles, this map is linear. In other words,
+(after choice of a unit of work) $\diff W(p)$ is an element of the dual space
+\[
+  \mathrm T^*_p M \coloneqq (\mathrm T_p M)^*
+\]
+of the vector space $\mathrm T_p M$. For any manifold $M$ and a point $p \in M$,
+the vector space $\mathrm T^*_p M$ is called the \emph{cotangent space of $M$
+at $p$}. An element of $\mathrm T^*_p M$ is called a \emph{covector} or \emph{linear
+form at $p$}. At a given point $p$, a force field is thus modelled by a covector.
+
+An important source of covectors is given by the derivation: Let $\phi \in \mathcal
+C^\infty(M)$ be a function on an $n$-dimensional manifold $M$. By definition 
+of the vector space structure of a tangent space $\mathrm T_p M$ at a point $p \in M$,
+the map
+\[
+  \diff_p \phi\colon \mathrm T_p M \to \set R,
+  v \mapsto v \cdot \phi
+\]
+is a linear one and thus an element in the cotangent space. The linear form
+$\diff_p \phi \in \mathrm T^*_p M$ is the \emph{(total) differential of $\phi$ at
+$p$}. Given a function $\phi$ that is only defined in a neighborhood of $p$, the
+differential $\diff_p \widehat\phi$ does not depend on the extension $\widehat \phi$
+of $\phi$ by zero away from $p$. Thus we can define the \emph{differential
+$\diff_p \phi \coloneqq \diff_p \widehat \phi$ of $\phi$ at $p$}. In particular,
+every chart $(x, U) \in \mathfrak U^\infty(p, M)$ defines $n$ differentials
+$\diff_p x_1$, \dots, $\diff_p x_n$. These differentials form a basis of
+$\mathrm T^*_p M$ dual to the basis $\frac{\partial}{\partial x_1}|_p$, \dots,
+$\frac{\partial}{\partial x_n}$ of $\mathrm T_p M$, that is
+\[
+  \forall i, j \in \Set{1, \dotsc, n}:
+  \diff_p x_i(\frac{\partial}{\partial x_i}|_p) = \updelta_{ij}.
+\]
+
+Besides scalars, vectors and covectors (linear forms), there are even more
+complicated objects we need to model physical quantities attached to a point
+$p \in M$. Assume that we have a way to define lengths of vectors and angles
+between vectors on a manifold $M$. (This is, for example, true if $M$ is
+Galilean space where classical mechanics, Newtonian gravity or electrostatics
+take place.) After choice of a unit of length, the (square of the)
+length of a vector $v \in \Tang_p M$ is given by
+\[
+  {\norm v}^2 \coloneqq \form{v, v}_p,
+\]
+where $\form{\cdot, \cdot}_p$ is a positive-definite symmetric bilinear form
+\[
+  \mathrm T_p M \times \mathrm T_p M \to \set R,
+\]
+in other words an inner product on $\mathrm T_p M$. (Recall that a bilinear map
+is a map that is linear in each of its two arguments. In general, a \emph{multilinear
+map} is linear in all of its arguments.) Thus also symmetric bilinear
+forms can be attached to a point of space.
+
+As a final example we consider on a manifold $M$ a crystalline solid
+with possible dislocations, which are one-dimensional lattice defects. An
+infinitesimal parallelogram at a point $p \in M$ is given by two vectors
+$u$ and $v \in \mathrm T_p M$ that span the two edges of the parallelogram at
+$p$. If one goes around the parallelogram-shaped small loop in the crystalline
+solid at $p$, one can roll along the way an idealized perfect version of the
+crystalline solid. By this we mean that whenever we move from one
+constituent of the actual crystalline solid to the next one while going around
+the loop, we take the corresponding move in the idealized crystalline solid. At
+the end of the closed loop in the actual crystalline solid, we may not end at
+the starting point in the idealized crystalline solid. In general the end point
+in the idealized crystalline solid differs from the starting point by a vector
+$w$, which we can identify via the crystalline structure with a vector $w$
+at $p$ in $M$. The non-vanishing of $w$ is a measurement of the dislocations of
+the crystalline solid along the surface element spanned by $u$ and $v$. All
+dislocations at $p$ are therefore modelled by a map
+\[
+  \mathrm T_p M \times \mathrm T_p M \to \mathrm T_p M
+\]
+that maps $(u, v)$ to $w$. Again by basic principles, we can assume that this
+map is linear. This map is an even more general quantity than a scalar, vector,
+covector or a bilinear form; it is a bilinear map on $\mathrm T_p M$ taking
+values in $\mathrm T_p M$.
+
+The general notion that subsumes all these types of quantities is that of a
+tensor:
+
+\begin{dfn}
+  A \emph{tensor of type $(k, \ell)$ at a point $p$ on a manifold $M$} is a
+  multilinear map
+  \[
+    (\mathrm T^*_p M)^k \times (\mathrm T_p M)^\ell \to \set R.
+  \] 
+\end{dfn}
+This means, given a tensor $A$ of type $(k, \ell)$ and $k$ covectors
+$\alpha_1$, \dots, $\alpha_k$ and $\ell$ vectors $v_1$, \dots, $v_\ell$, one
+gets a scalar $A(\alpha_1, \dotsc, \alpha_k, v_1, \dotsc, v_\ell)$, and this
+scalar depends linearly on each $\alpha_i$ and on each $v_j$. The set of
+tensors at a point $p \in M$ is denoted by $\mathrm T^{(k, \ell)}_p M$. As the
+sum of two multilinear maps and the multiplication of a multinear map with a
+scalar are again multilinear maps, the set $\mathrm T^{(k, \ell)}_p M$ becomes
+a vector space by point-wise addition and scalar multiplication, the \emph{space
+of tensors of type $(k, \ell)$ at $p$}.
+
+For example, the work done by a force field at a point $p$ is a tensor of type
+$(0, 1)$ (which is nothing but a linear form or covector) and
+the inner product $\form{\cdot, \cdot}_p$ from above is a special
+tensor (namely a symmetric one) of type $(0, 2)$ at $p$
+ A scalar, like the temperature of a fluid at
+a point $p$, is also a tensor, namely a tensor of type $(0, 0)$. (By convention,
+a multilinear map of no arguments is just an element of the target space, which
+is given by the reals in this case.)
+The velocity $v$ of a fluid at a point $p$, however, is not immediately seen to be
+a tensor of any type as defined above as $v$ is firstly a vector and not a
+(multi-)linear map on any space. Nevertheless, this vector induces a linear
+map, namely
+\[
+  v^*\colon \mathrm T^*_p M \to \set R, \alpha \mapsto \alpha(v),
+\]
+which is a tensor of type $(1, 0)$. From $v^*$ we can reconstruct the vector
+$v$ as
+\[
+  v = \sum_{i = 1}^n v^*(\theta_i) \, u_i
+\]
+where $u_1$, \dots, $u_n$ is any basis of $\mathrm T_p M$ with dual basis
+$\theta_1$, \dots, $\theta_n$. (This observation is
+nothing but the well-known fact that canonical linear map
+\[
+  V \to V^{**}, v \mapsto (v^*\colon \alpha \mapsto \alpha(v))
+\]
+from a vector space to its double dual is an isomorphism for finite-dimensional
+vector spaces.) Therefore, when modelling physical quantities, we won't
+distinguish between a vector quantity $v$ and the corresponding tensor quantity
+$v^*$ of type $(1, 0)$.
+
+More generally, any $(k + \ell - 1)$-linear map of the form
+\[
+  L\colon (\mathrm T_p^* M)^{k - 1} \times (\mathrm T_p M)^\ell \to \mathrm T_p M
+\]
+induces a $(k + \ell)$-linear map
+\[
+  \begin{aligned}
+    L^*\colon & (\mathrm T_p^* M)^k \times (\mathrm T_p M)^\ell \to \mathrm T_p M, \\
+    & (\alpha_0, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell) \mapsto
+    \alpha_0(L(\alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell),
+  \end{aligned}
+\]
+that is a tensor if type $(k, \ell)$, and $L$ can be recovered by the formula
+\[
+  L(\alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell)
+  = \sum_{i = 1}^n L^*(\theta_i, \alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc,
+  v_\ell) \, u_i.
+\]
+
+Thus the dislocation of a crystalline solid at a point $p$, which above
+was modelled by a vector-valued bilinear form, is nothing but a tensor of
+type $(1, 2)$. 
+
 \section{Vector fields}
+
+% velocity field (attached to many points)
+
+% integration
+
+% lie bracket
 
 \section{Tensor fields}
 
@@ -799,3 +973,35 @@ as just a non-vanishing vector $u$ at any point in space-time.
   where $f\colon M \to N$ and $g\colon N \to P$ are two (composable) morphisms
   between manifolds.
 \end{xca}
+
+\begin{xca}
+  Let $\phi$ and $\psi$ be two functions on a manifold $M$
+  that coincides in a neighborhood of a point $p \in M$. Why is
+  $\diff_p \phi = \diff_p \psi$?  
+\end{xca}
+
+\begin{xca}
+  Let $M$ be a manifold and $p \in M$ be a point. Show that for any chart
+  $(x, U) \in \mathfrak U^\infty(p, M)$, the system
+  \[
+    \diff_p x_1, \dotsc, \diff_p x_n
+  \]
+  is a dual basis to the basis
+  \[
+    \frac{\partial}{\partial x_1}|_p,
+    \dotsc, \frac{\partial}{\partial x_n}|_p.
+  \]
+\end{xca}
+
+\begin{xca}
+  Let $v \in \mathrm T_p M$ be a vector at a point $p$ on a manifold $M$. Let
+  $(x, U) \in \mathfrak U^\infty(p, M)$ be any chart near $p$. Let
+  $v^*\colon \alpha \mapsto \alpha(v)$ be the tensor of type $(1, 0)$ at $p$
+  induced by $p$.
+  Show that
+  \[
+    v = \sum_{i = 1}^n v_i \, \frac{\partial}{\partial x_i}|_p,
+  \]
+  where $v_i \coloneqq v^*(\diff_p x_i)$ for $i \in \Set{1, \dotsc, n}$.
+\end{xca}
+
