@@ -456,6 +456,10 @@ for any $p$, $q$ with $p + q = n$, the map
 is a diffeomorphism. (Here, the left hand side is, of course, endowed with the
 structure of a product manifold.)
 
+One example of a product manifold in classical physics is given by Galilean
+spacetime; it is the product $L \times Q$ of the one-dimensional manifold
+$L$ of absolute time and the three-dimensional manifold $Q$ of Galilean space.
+
 \section{Vectors}
 % XXX Put this and the following in a separate chapter.
 \label{sec:vectors}
@@ -652,6 +656,8 @@ whose inverse is denoted by
 \[
   \diff_p x\colon \mathrm T_p M \to \set R^n.
 \]
+In case of $n = 1$, we write $\partial_t \coloneqq \partial(t) \coloneqq
+\partial_1(t)$, where $t \in \set R$.
 
 By the very definition of a vector, we can differentiate functions on a 
 manifold, that is morphisms to the manifold $\set R$ along a vector. What is
@@ -902,22 +908,22 @@ type $(1, 2)$.
 
 \section{Vector fields}
 
-As a basic example of a vector on an $n$-dimensional manifold $M$ we gave the velocity vector
-of a fluid modelled on $M$ at a point $p$. Often, however, one is not interested
+As a basic example of a vector on an $n$-dimensional manifold $M$ we gave the velocity vector of a fluid modelled on $M$ at a point $p$. Often, however,
+one is not interested
 in a single velocity vector but at the totality of all velocity vectors at all
 points of $M$. This yields to the following definition:
 
 \begin{dfn}
-  A \emph{vector field $X$} on a manifold $M$ is a family $(X(p))_{p \in M}$
-  of vectors on $M$ such that $X(p) \in \Tang_p M$ for all $p \in M$ and such
+  A \emph{vector field $X$} on a manifold $M$ is a family $(X_p)_{p \in M}$
+  of vectors on $M$ such that $X_p \in \Tang_p M$ for all $p \in M$ and such
   that
   \[
-    X \cdot \phi\colon p \mapsto X(p) \cdot \phi
+    X \cdot \phi\colon p \mapsto X_p \cdot \phi
   \]
   is a (differentiable) function on $M$ for any function $\phi \in \mathcal
   C^\infty(M)$.
 \end{dfn}
-The latter condition ensures that the vectors $X(p)$ vary smoothly when $p$ is
+The latter condition ensures that the vectors $X_p$ vary smoothly when $p$ is
 varied. In general, the velocitites at all points of a fluid are thus modelled
 by such a vector field. The set of vector fields is denoted by $\mathfrak X(M)$.
 This set becomes an $\mathcal C^\infty(M)$-module by defining addition and
@@ -939,7 +945,7 @@ The test particle will trace out a curve $\alpha\colon J \to M$ on $M$ such that
 the particles velocity will coincide with the fluids velocity at the point of
 the particle at all times:
 \[
-  \forall t \in J: \dot\alpha(t) = X(\alpha(t))
+  \forall t \in J: \dot\alpha(t) = X_{\alpha(t)}
 \]
 where $X$ is the vector field describing the fluid's velocity with respect to
 a chosen unit of time. A curve for which $\dot \alpha = X \circ \alpha$ holds
@@ -1001,8 +1007,54 @@ the following theorem:
   by $X$}.
 \end{thm}
 
-% \begin{proof} \end{proof}
+\begin{proof}
+  We first show that unique integral curves exist locally: Let $(x, U)$ be
+  a chart on $M$ and $G \coloneqq x(U) \subseteq \set R^n$. There are $n$
+  functions $\phi_1$, \dots, $\phi_n$ on $U$ such that
+  \[
+    X|U \coloneqq (X_p)_{p \in U}
+    = \sum_{i = 1}^n \phi_i \, \frac{\partial}{\partial x_i}.
+  \]
+  We set $f \coloneqq (\phi_1 \circ x^{-1}, \dotsc, \phi_n \circ x^{-1})
+  \colon G \to \set R^n$. If $p_0 \in U$ and $\alpha\colon J \to M$ a curve
+  with $t_0 \in J$ and $\alpha(t_0) = p_0$, then by continuity of $\alpha$
+  there exists an $\epsilon > 0$ such that
+  $I \coloneqq U_\epsilon(t_0) \subseteq J$ and $\alpha(I) \subseteq U$. The
+  map $x \circ \alpha \coloneqq x \circ \alpha|I\colon I \to \set R^n$ fulfills
+  $(x \circ \alpha)(I) \subseteq G$ and
+  \[
+    \forall t \in I : (x \circ \alpha)'(t) = \diff_{\alpha(t)} x(\dot\alpha(t)).
+  \]
+  On the other hand,
+  \[
+    \forall t \in I: f((x \circ \alpha)(t)) = \diff_{\alpha(t)}(X_{\alpha(t)}).
+  \] 
+  It follows that $\alpha|I$ is an integral curve of $X$ with $\alpha(t_0) = p_0$
+  if and only if the map $x \circ \alpha$ is a solution of the system
+  of ordinary differential equations
+  $y'(t) = f(y(t))$ with initial value $y(t_0) = x(p_0)$.
+
+  We use this result to show the existence of maximal integral curves. For given
+  $(t_0, p_0) \in \set R \times M$ let $\Sigma(t_0, p_0)$ be the set of all
+  integral curves $\beta\colon J_\beta \to M$, where $J_\beta \subseteq \set R$
+  is an open interval with $t_0 \in J_\beta$ and $\beta(t_0) = p_0$.
+  By the local existence of integral curves, $\Sigma(t_0, p_0) \neq \emptyset$.
+  For any pair $\beta$, $\gamma \in \Sigma(t_0, p_0)$, the set $J_\beta \cap
+  J_\gamma$ is an open interval containing $t_0$. We claim that $\beta|J_\beta
+  \cap J_\gamma = \gamma|J_\beta \cap J_\gamma$: Let
+  \[
+    A \coloneqq \Set{t \in J_\beta \cap J_\gamma : \beta(t) = \gamma(t).
+  \]
+  To prove our claim, we have to show that $A = J_\beta \cap J_\gamma$. First
+  of all, $A \neq \emptyset$ because $t_0 \in A$. Furthermore, $A$ is a closed
+  subset of $J_\beta \cap J_\gamma$ because it is defined by an equation in a
+  Hausdorff space. Finally, $A$ is open because of the local uniqueness of
+  integral curves. Thus $A = J_\beta \cap J_\gamma$ by the connectedness of
+  intervals in $\set R$.
+\end{proof}
 % lie bracket
+
+
 
 \section{Tensor fields}
 
