@@ -955,11 +955,13 @@ the vector field. The question of existence of integral curves is handled by
 the following theorem:
 
 \begin{thm}
-  Let $M$ be a manifold and $X \in \mathfrak X(M)$.
+  Let $M$ be a manifold and $X \in \mathfrak X(M)$. Then the following holds:
+  
   \paragraph{Existence of maximal integral curves}
   For each pair $(t_0, p) \in \set R \times M$ there exists an integral curve
   $\alpha\colon J \to M$ with $\alpha(t_0) = p$ that is maximal and unique in the
-  following sense: Is $\widetilde\alpha\colon \widetilde J \to M$ any integral
+  following sense: If $\widetilde\alpha\colon \widetilde J \to M$ is any
+  integral
   curve on $X$ with $\widetilde \alpha(t_0) = p$, then $\widetilde J \subseteq
   J$ and $\alpha|\widetilde J = \widetilde \alpha$. The integral curve $\alpha$
   is the \emph{maximal integral curve of $X$ to the initial condition $(t_0, p)$}.
@@ -968,7 +970,7 @@ the following theorem:
   
   \paragraph{Translation invariance of integral curves}
   If $\alpha\colon J \to M$ is any integral curve on $M$ and $s \in \set R$, then
-  $\beta\colon -s + J \to M, t \mapsto \alpha(t + s)$ is an integral curve.
+  $\beta\colon -s + J \to M, t \mapsto \alpha(t + s)$ is again an integral curve.
   
   \paragraph{Maximal flow}
   The set
@@ -992,7 +994,7 @@ the following theorem:
   \]
   is a diffeomorphism onto $D_{-t}$. (In particular $D_{-t} \neq \emptyset$
   whenever $D_t \neq \emptyset$.)
-  One has $D_0 = M$ and $\Phi_0 = \id_M$. Moreover one has
+  One has $D_0 = M$ and $\Phi_0 = \id_M$. Moreover, one has
   \begin{gather*}
     \forall t, s \in \set R: 0 \leq t < s \implies D_s \subseteq D_t,\\
     M = \bigcup_{t \in \set R_+} D_t, \\
@@ -1090,7 +1092,7 @@ the following theorem:
   the construction of \prettyref{eq:ode}. By the existence theorem
   for smooth local flows, \prettyref{thm:diff_flow}, there exists an
   $\epsilon \in \set R_+$ and a $\widetilde V \in \mathfrak U^0(x(p_0), G)$
-  and a smmoth function $\Psi\colon U_\epsilon(0) \times \widetilde V \to
+  and a smooth function $\Psi\colon U_\epsilon(0) \times \widetilde V \to
   G$ such that $\Psi^u\colon U_\epsilon(0) \to \set R^n$ is a solution
   of the differential equation $y'(t) = f(y)$ with $y(0) = u$ for each $u
   \in \widetilde V$. Set $V \coloneqq x^{-1}(\tilde V)$. Then $U_\epsilon(0)
@@ -1163,7 +1165,7 @@ the following theorem:
   that there exists a $V \in \mathfrak U^0(p_0, M)$ with $\Set s \times V
   \subseteq D^\infty$. By definition of $D^\infty$, one has $V \subseteq
   D_s$ and that $\Phi_s|V\colon V \to M$ is a morphism. By shrinking $V$ if
-  necessary (replace $V$ by $V \cap \Phi_s^{-1}(U)$, one can assume that
+  necessary (replace $V$ by $V \cap \Phi_s^{-1}(U)$), one can assume that
   $\Phi_s(V) \subseteq U$. Let $(t, p) \in U_\epsilon(\tau) \times V$. Then
   $\abs{t - s} \leq \abs{t - \tau} + \abs{\tau - s} < 2 \epsilon$ and
   $\Phi(p) \in U$. By \prettyref{eq:flow_proof}, $(t - s, \Phi_s(p)) \in D$,
@@ -1175,7 +1177,7 @@ the following theorem:
     \forall (t, p) \in U_\epsilon(\tau) \times V:
       \Phi(t, p) = \Phi(t - s, \Phi_s(p)).
   \]
-  As a composition of two morphisms, $\Phi|U_\epsilon(\tau) \times V$ is a 
+  As a composition of morphisms, $\Phi|U_\epsilon(\tau) \times V$ is a 
   morphism, that is $U_\epsilon(\tau) \times V \subseteq D^\infty$. In particular,
   $U_\epsilon(\tau) \cap B = \emptyset$, a contradiction to the construction of
   $\tau$. Thus $B = \emptyset$, that is $(J_{p_0} \cap \set R_+) \times \Set{p_0}
