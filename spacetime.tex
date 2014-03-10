@@ -56,7 +56,7 @@ which it is contained by adding all $n$-dimensional charts to $\mathfrak A$ that
 are compatible with each in chart in $\mathfrak A$. We also say that the maximal
 atlas is \emph{generated} by the charts contained in $\mathfrak A$.
 
-An \emph{$n$-dimensional premanifold $M$} is set $M$ together
+An \emph{$n$-dimensional premanifold $M$} is a set $M$ together
 with a maximal $n$-dimensional atlas $\mathfrak U^\infty(M)$ of $M$. The set of
 all charts $(x, U)$ in $\mathfrak U^\infty(M)$ that contains a given point $p \in M$ is 
 denoted by $\mathfrak U^\infty(p, M)$. A \emph{chart of $M$} is a chart in the
@@ -576,7 +576,7 @@ $\Tang_p M$. In fact, we have:
   \begin{equation}
     \label{eq:coordinate_basis}
     \frac{\partial}{\partial x_i}|_p\colon \mathcal C^\infty(M)
-    \to \set R, f \mapsto \delta_i ((f|U) \circ x^{-1}) (x(p))
+    \to \set R, f \mapsto \partial_i ((f|U) \circ x^{-1}) (x(p))
     \eqqcolon \frac{\partial f}{\partial x_i}(p),  
   \end{equation}
   where $i = 1, \dotsc, n$. If $(y, V) \in \mathfrak U^\infty(p, M)$ is another
@@ -669,7 +669,7 @@ straight-forward:
 Let $f\colon M \to N$ be a morphism of manifolds. For a point $p \in M$, let
 $v \in \mathrm T_p M$. The map
 \[
-  f_* v\colon \mathcal C^\infty(N) \to \mathcal C^\infty(N), \psi \mapsto
+  f_* v\colon \mathcal C^\infty(N) \to \set R, \psi \mapsto
   v \cdot (\psi \circ f)
 \]
 fulfills the linearity and constant axioms and a Leibniz rule as follows
@@ -700,13 +700,13 @@ have
 \[
   \begin{aligned}
     \forall v \in \Tang_p M: &&
-    (\id_M)_* v & v, &
+    (\id_M)_* v & = v, &
     (g \circ f)_* v & = g_* (f_* v),
   \end{aligned}
 \]
 where $f\colon M \to N$ and $g\colon N \to P$ are two composable morphisms
 between manifolds. This observation can be subsumed by saying that the
-tangent space is a function from the category of pointed manifolds to the
+tangent space is a functor from the category of pointed manifolds to the
 category of finite-dimensional vector spaces. 
 
 Given a curve $\alpha\colon J \to M$ and a point $t \in J$, which we may view
@@ -783,7 +783,7 @@ $\diff_p \phi \coloneqq \diff_p \widehat \phi$ of $\phi$ at $p$}. In particular,
 every chart $(x, U) \in \mathfrak U^\infty(p, M)$ defines $n$ differentials
 $\diff_p x_1$, \dots, $\diff_p x_n$. These differentials form a basis of
 $\mathrm T^*_p M$ dual to the basis $\frac{\partial}{\partial x_1}|_p$, \dots,
-$\frac{\partial}{\partial x_n}$ of $\mathrm T_p M$, that is
+$\frac{\partial}{\partial x_n}|_p$ of $\mathrm T_p M$, that is
 \[
   \forall i, j \in \Set{1, \dotsc, n}:
   \diff_p x_i(\frac{\partial}{\partial x_i}|_p) = \updelta_{ij}.
@@ -1043,7 +1043,7 @@ the following theorem:
   J_\gamma$ is an open interval containing $t_0$. We claim that $\beta|J_\beta
   \cap J_\gamma = \gamma|J_\beta \cap J_\gamma$: Let
   \[
-    A \coloneqq \Set{t \in J_\beta \cap J_\gamma : \beta(t) = \gamma(t).
+    A \coloneqq \Set{t \in J_\beta \cap J_\gamma : \beta(t) = \gamma(t)}.
   \]
   To prove our claim, we have to show that $A = J_\beta \cap J_\gamma$. First
   of all, $A \neq \emptyset$ because $t_0 \in A$. Furthermore, $A$ is a closed

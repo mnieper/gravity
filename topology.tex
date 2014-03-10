@@ -46,7 +46,7 @@ set of $X$ such that its complement $X \setminus Z$ is open. Let $Y$ be an
 arbitrary subset of $X$. The \emph{closure $\overline Y$ of $Y$ in $X$} is the
 smallest closed subset of $X$ containing $Y$, that is
 \begin{equation}
-  \overline Y = \bigcap_{\text{$Z \subseteq X$ is a closed subset}} Z
+  \overline Y = \bigcap_{\text{$Y \subseteq Z \subseteq X$ is a closed subset}} Z
 \end{equation}
 
 Let $Y$ be any subset of the underlying set of $X$. Set
@@ -136,7 +136,7 @@ Cartesian space $\set R^n$ is an example for a Hausdorff space.
 \begin{dfn}
   A Hausdorff space $X$ is \emph{normal} such that for any disjoint closed
   subsets $A$ and $B$ of $X$ there exists neighborhoods $U \in \mathfrak U(A, X)$
-  and $V \in \mathfrak U(B, X)$ with $U \cap V$.
+  and $V \in \mathfrak U(B, X)$ with $U \cap V = \emptyset$.
 \end{dfn}
 
 An open cover $(U_i)_{i \in I}$ of a topological space $X$ is \emph{locally finite}
@@ -182,7 +182,7 @@ is again a compact space.
 
 \begin{thm}
   A subset $K$ of cartesian space $\set R^n$ is compact if and only if it is closed
-  and there exists an $R \in \set R^+$ such that $K \subseteq \Set{p \in \set R^n : \norm p \leq R}$.
+  and there exists an $R \in \set R_+$ such that $K \subseteq \Set{p \in \set R^n : \norm p \leq R}$.
 \end{thm}
 
 The latter condition on $K$ says that $K$ is \emph{bounded}.
