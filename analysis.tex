@@ -38,3 +38,26 @@ of their interior).
     \forall x \in U: \phi(x) = \phi(a) + \sum_{i = 1}^n (x_i - a_i) \, g_i(x).
   \]
 \end{thm}
+
+\section{Ordinary differential equations}
+
+Let $p_0 \in \set R^n$ be a point in Euclidean space and
+$G \in \mathfrak U^0(p_0, \set R^n)$ an open subset. Let $f\colon G \to \set R^n$
+be a smooth functions.
+
+\begin{thm}[Existence theorem for smooth local flows]
+  \label{thm:diff_flow}
+  There exists a neighborhood $U \in \mathfrak U^0(p_0, G)$, an
+  $\epsilon \in \set R_+$ and a smooth function $\Psi\colon
+  U_\epsilon(0) \times U \to G$ such that the curves
+  \[
+    \Psi^p\colon U_\epsilon(0) \to G, t \mapsto \Psi(t, p)
+  \]
+  solve the initial value problem
+  \begin{align*}
+    (\Psi^p)' & = X \circ \Psi^p, &
+    \Psi^p(0) & = 0
+  \end{align*}
+  for each $p \in U$.
+\end{thm}
+

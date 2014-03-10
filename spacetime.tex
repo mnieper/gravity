@@ -1030,9 +1030,16 @@ the following theorem:
     \forall t \in I: f((x \circ \alpha)(t)) = \diff_{\alpha(t)}(X_{\alpha(t)}).
   \] 
   It follows that $\alpha|I$ is an integral curve of $X$ with $\alpha(t_0) = p_0$
-  if and only if the map $x \circ \alpha$ is a solution of the system
+  if and only if the map $x \circ \alpha$ is a solution of the initial
+  value problem given by the system
   of ordinary differential equations
-  $y'(t) = f(y(t))$ with initial value $y(t_0) = x(p_0)$.
+  \begin{align}
+    \label{eq:ode}
+    y'(t) & = f(y(t)), & y(t_0) & = x(p_0).
+  \end{align}
+  By the Picard-Lindelöf theorem, this ordinary differential equation has
+  locally a unique solution for every initial value. Thus also $\alpha$ exists
+  locally and is locally unique. 
 
   We use this result to show the existence of maximal integral curves. For given
   $(t_0, p_0) \in \set R \times M$ let $\Sigma(t_0, p_0)$ be the set of all
@@ -1050,9 +1057,136 @@ the following theorem:
   subset of $J_\beta \cap J_\gamma$ because it is defined by an equation in a
   Hausdorff space. Finally, $A$ is open because of the local uniqueness of
   integral curves. Thus $A = J_\beta \cap J_\gamma$ by the connectedness of
-  intervals in $\set R$.
+  intervals in $\set R$. Therefore, there is a unique curve $\alpha\colon J \to
+  M$ with
+  \begin{align*}
+    J & \coloneqq \bigcup_{\beta \in \Sigma(t_0, p_0)} J_\beta,&
+    \forall \beta \in \Sigma(t_0, p_0): \alpha|J_\beta = \beta.
+  \end{align*}
+  Obviously, $\alpha$ is the greatest element in $\Sigma(t_0, p_0)$, and
+  $\alpha$ is the maximal integral curve in question.
+
+  The next thing to show is the translation invariance of integral curves,
+  namely that
+  $\beta\colon -s + J \to M, t \mapsto \alpha(t + s)$ is for any integral
+  curve $\alpha\colon J \to M$ another integral curve. But this follows
+  easily from the chain rule:
+  $\dot\beta(t) = \dot\alpha(t + s) = X_{\alpha(t + s)} = X_{\beta(t)}$.
+  In fact, with what we have already proven, we get a bit more:
+  Let $p \in M$, $s \in J_p$, and $q \coloneqq \alpha_p(s)$. Then
+  $-s + J_p \subseteq J_q$ and $\alpha_q(t) = \alpha_p(t + s)$ for all
+  $t \in -s + J_p$. That $0 \in J_p$ implies $-s \in J_q$ and, thus,
+  $s + J_q \subseteq J_p$, which in turn implies $J_q \subseteq -s + J_p$.
+  It follows that $J_q = -s + J_p$.
+
+  In preparation for proving the rest of the theorem, besides $D$ and $\Phi$,
+  we define $D^\infty$ as the set of all pairs $(t, p)$ such that
+  there exists an $U \in \mathfrak U^0(p, M)$ and an $\epsilon \in \set R_+$
+  such that $U_\epsilon(t) \times U \subseteq D$ and
+  such that $\Phi|U_\epsilon \times U\colon U_\epsilon \times U \to M$
+  is a morphism. By definition, $D^\infty$ is open and $\Phi|D^\infty$ is
+  a morphism. We claim that $\Set 0 \times M \subseteq D^\infty$: For $p_0
+  \in M$ choose a chart $(U, x) \in \mathfrak U^\infty(p_0, M)$ and repeat
+  the construction of \prettyref{eq:ode}. By the existence theorem
+  for smooth local flows, \prettyref{thm:diff_flow}, there exists an
+  $\epsilon \in \set R_+$ and a $\widetilde V \in \mathfrak U^0(x(p_0), G)$
+  and a smmoth function $\Psi\colon U_\epsilon(0) \times \widetilde V \to
+  G$ such that $\Psi^u\colon U_\epsilon(0) \to \set R^n$ is a solution
+  of the differential equation $y'(t) = f(y)$ with $y(0) = u$ for each $u
+  \in \widetilde V$. Set $V \coloneqq x^{-1}(\tilde V)$. Then $U_\epsilon(0)
+  \times V \subseteq D$ by what we have already seen and
+  \[
+    \forall (t, p) \in U_\epsilon(0) \times V: \Phi(t, p) = x^{-1}
+    \circ \Psi(t, x(p)).
+  \]
+  This shows that $\Phi|U_\epsilon(0) \times V: U_\epsilon(0) \times V \to M$
+  is a morphism and therefore $U_\epsilon(0) \times V \subseteq D^\infty$. As
+  $p_0$ was chosen arbitrarily, one concludes $\Set 0 \times M
+  \subseteq D^\infty$, that is
+  \[
+    D^\infty \in \mathfrak U^\infty(\Set 0 \times M,
+    \set R \times M).
+  \]
+  In particular $D_0 = M$ and $\Phi_0 = \id_M$ as $\alpha_p(0) = 0$ for all
+  $p \in M$.
+  
+  This proves one of the set-theoretic properties claimed in the paragraph
+  ``local $1$-parameter group''. To show the other set-theoretic properties
+  there, let $0 \leq t < s$ and $p \in D_s$. Then $0$, $s \in J_p$ and thus
+  $t \in J_p$, from which $p \in D_t$ follows. So $D_s \subseteq D_t$.
+  
+  For
+  each $p \in M$, the set $J_p \cap \set R_+$ is not empty, say $t \in J_p
+  \cap \set R_+$. This means $p \in D_t$. The choice of $p$ was arbitrary, so
+  $M = \bigcup_{t \in \set R_+} D_t$.
+  
+  Let $t$, $s \in \set R$, $p \in D_s$. With $q \coloneqq \Phi_s(p)$ one have
+  \[
+    q \in D_t \iff t \in J_q = -s + J_p \iff t + s \in J_p \in p \in D_{t + s}.
+  \]
+  And for $q \in D_t$, that is $t \in J_q$, one has
+  \[
+    \Phi_t \circ \Phi_s(p) = \Phi_t(q) = \alpha_q(t) = \alpha_p(t + s)
+    = \Phi_{t + s}(p).
+  \]
+  
+  The last set-theortic property stated in that paragraph and that remains to
+  be shown is that $\Phi_t$ induces a bijection from $D_t$ onto $D_{-t}$. This
+  follows from the preceding by setting $s \coloneqq -t$: It is
+  $D_{-t} \subseteq M = D_0$ and thus $\Phi_{-t}(p) \in D_t$ and $\Phi_t
+  \circ \Phi_{-t}(p) = \Phi_0(p) = p$ for all $p \in D_{-t}$. Thus
+  $\Phi_{-t}(D_t) \subseteq D_t$ and $\Phi_t \circ \Phi_{-t} = \id_{D_{-t}}$.
+  Changing the roles of $t$ and $-t$ yields $\Phi_t(D_t) \subseteq D_{-t}$ and
+  $\Phi_{-t} \circ \Phi_t = \id_{D_t}$, which shows the claim. 
+  
+  The only local $1$-parameter group property that remains to be proven is that
+  $\Phi_t\colon D_{-t} \to D_t$ is a diffeomorphism. This will follow from the
+  preceeding once we have proven that $\Phi$ is a morphism.
+  
+  To show this and the maximal flow properties, it is enough to show that
+  $D = D^\infty$. Fix a $p_0 \in M$. Set
+  \[
+    B \coloneqq \Set{t \in J_{p_0} \cap \set R_+: (t, p_0) \notin D^\infty}.
+  \]
+  
+  We claim that $B \neq \emptyset$ is impossible. Otherwise, set $\tau
+  \coloneqq \inf B < \infty$. By what we already know about $D^\infty$, it is
+  $\tau > 0$. Moreover, there exists a $U \in \mathfrak U^0(\alpha_{p_0}(\tau),
+  M)$ and an $\epsilon \in \set R_+$ such that
+  \begin{equation}
+    \label{eq:flow_proof}
+    U_{2\epsilon}(0) \times U \subseteq D^\infty.
+  \end{equation}
+  By definition of $\tau$, there is an $s \in \set R_+$
+  with $\tau - \epsilon < s < \tau$ and $\alpha_{p_0}(s) \in U$. It is
+  $s \notin B$ and therefore $(s, p_0) \in D^\infty$. This means in particular
+  that there exists a $V \in \mathfrak U^0(p_0, M)$ with $\Set s \times V
+  \subseteq D^\infty$. By definition of $D^\infty$, one has $V \subseteq
+  D_s$ and that $\Phi_s|V\colon V \to M$ is a morphism. By shrinking $V$ if
+  necessary (replace $V$ by $V \cap \Phi_s^{-1}(U)$, one can assume that
+  $\Phi_s(V) \subseteq U$. Let $(t, p) \in U_\epsilon(\tau) \times V$. Then
+  $\abs{t - s} \leq \abs{t - \tau} + \abs{\tau - s} < 2 \epsilon$ and
+  $\Phi(p) \in U$. By \prettyref{eq:flow_proof}, $(t - s, \Phi_s(p)) \in D$,
+  and thus $\Phi_s(p) \in D_{t - s}$. On the other hand, $p \in D_s$. Thus
+  $p \in D_t$ by what we have already proven and $\Phi_{t - s} \circ \Phi_s(p)
+  = \Phi_t(p)$. We have therefore shown that $U_\epsilon(\tau) \times V
+  \subseteq D$ and
+  \[
+    \forall (t, p) \in U_\epsilon(\tau) \times V:
+      \Phi(t, p) = \Phi(t - s, \Phi_s(p)).
+  \]
+  As a composition of two morphisms, $\Phi|U_\epsilon(\tau) \times V$ is a 
+  morphism, that is $U_\epsilon(\tau) \times V \subseteq D^\infty$. In particular,
+  $U_\epsilon(\tau) \cap B = \emptyset$, a contradiction to the construction of
+  $\tau$. Thus $B = \emptyset$, that is $(J_{p_0} \cap \set R_+) \times \Set{p_0}
+  \subseteq D^\infty$.
+  
+  Likewise, $(J_{p_0} \times \set R_{-}) \times \Set{p_0} \subseteq D^\infty$.
+  We already know that $(0, p_0) \in D^\infty$, so $J_{p_0} \times \Set{p_0}
+  \subset D^\infty$. Varying $p_0$ finally yields $D \subseteq D^\infty$.
 \end{proof}
-% lie bracket
+
+% lie bracket 
 
 
 
