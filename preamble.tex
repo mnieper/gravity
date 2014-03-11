@@ -22,11 +22,11 @@
 
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[chapter]
-\newtheorem{lem}{Lemma}[chapter]
-\newtheorem{cor}{Corollary}[chapter]
-\newtheorem{prop}{Proposition}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
 \theoremstyle{definition}
-\newtheorem{dfn}{Definition}[chapter]
+\newtheorem{dfn}[thm]{Definition}
 \newtheorem{xca}{Problem}[chapter]
 
 \newrefformat{prop}{Proposition \ref{#1}}
