@@ -167,7 +167,7 @@ topologies of $M$ and $\set R$, respectively. Let $\phi$ be a function on $M$
 and $G$ an open submanifold. The \emph{restriction $\phi|G$ of $\phi$ to $G$},
 given by
 \[
-  \phi|G\colon G \to M, p \mapsto f(p)
+  \phi|G\colon G \to M, p \mapsto \phi(p)
 \]
 is a function on the manifold $G$. For any chart $(x, U)$ of $M$, the coordinate
 functions $x_1$, \dots, $x_n\colon U \to M$ are smooth functions on the open
@@ -208,7 +208,7 @@ of the support $\supp$ of a function, see \prettyref{sec:continuity}):
   For all $i \in I$, one has $\supp \lambda_i \subseteq U_i$.
   
   \paragraph{Local finiteness}
-  Every $p \in M$ posesses a neighborhood $G \in \mathfrak U^0(p, M)$ such that there
+  Every $p \in M$ possesses a neighborhood $G \in \mathfrak U^0(p, M)$ such that there
   are only finitely many $i \in I$ with $\supp \lambda_i \cap G \neq \emptyset$.
   
   \paragraph{Normalization}
@@ -252,7 +252,7 @@ The proof relies on the following lemma, which is also of independent interest:
   
   The open subsets $U_p \coloneqq \Set{q \in M : \phi_p(q) > 0}$ with $p \in K$ cover $K$. By
   compactness of $K$, there exists a finite subset $A \subseteq K$ such that
-  $K$ is covered by $(U_p)_{p \in K}$. By construction, the function
+  $K$ is covered by $(U_p)_{p \in A}$. By construction, the function
   $\phi = \sum_{p \in A} \phi_p$
   fulfills \prettyref{eq:paracompact_manifold}.
 \end{proof}
@@ -296,7 +296,7 @@ The proof relies on the following lemma, which is also of independent interest:
   and, thus, $\lambda_i$ is a function on $M$ with $\lambda_i(p) \ge 0$ for all
   $p \in M$.
   
-  By construction, $\supp \lambda_i \subseteq \bigcup_{j \in J_i} V_j = U'_j \subseteq
+  By construction, $\supp \lambda_i \subseteq \bigcup_{j \in J_i} V_j = U'_i \subseteq
   U_i$, which proves the support axiom of a partition of unity. The covering
   $(U'_i)_{i \in I}$ is locally finite as the covering $(V_j)_{j \in J}$ is locally
   finite; this uses the disjointness of the $J_i$. From $\supp \lambda_i \subseteq U'_i$
@@ -315,7 +315,7 @@ be extended in the following sense:
   neighborhood $G$ of a point $p$
   in a manifold $M$. Then there exists a function $\widehat \phi \in \mathcal C^\infty(M)$
   with $\supp \widehat\phi \subseteq G$ and
-  such that $\widehat \phi$ coincides with $\phi$ on a neighboorhood $U \subseteq G$
+  such that $\widehat \phi$ coincides with $\phi$ on a neighborhood $U \subseteq G$
   of $p$ in $M$.
 \end{cor}
 The function $\widehat \phi$ is called an \emph{extension of $\phi$
@@ -327,8 +327,7 @@ by zero away from $p$}.
   Choose a partition $(\lambda, \mu)$ of unity subordinate to the open cover
   $(G, M \setminus K)$ of $M$. By the sheaf condition,
   \[
-    \hat\phi\colon M \to \set R,
-    \begin{cases}
+    \hat\phi\colon M \to \set R, p \mapsto \begin{cases}
       \lambda(p) \cdot \phi(p) & \text{if $p \in G$} \\
       0 & \text{if $p \in M \setminus \supp \lambda$}
     \end{cases}
@@ -338,7 +337,7 @@ by zero away from $p$}.
 \end{proof}
 
 For any two points $p$, $q \in M$ with $p \neq q$, there exists an open
-neighborhoods $G \in \mathfrak U^0(p, M)$ with $q \notin G$. Extending the
+neighborhood $G \in \mathfrak U^0(p, M)$ with $q \notin G$. Extending the
 constant function $\underline 1|G$ by zero away from $p$ yields a function,
 which is $1$ on $p$ and $0$ on $q$. Thus, we have
 \begin{equation}
@@ -473,9 +472,9 @@ relation of being at the same spatial location as the observer: an event $p$ is
 $p \in \alpha(J)$. The curve $\alpha$, however, is not determined by the set
 $\alpha(J)$ of events alone; it does not capture the dynamics of $\alpha$.
 For example, if we move infinitesimally from $t$ to $t + \diff t$ on $J$, we
-expect that $\alpha(t)$ moves infinitesimally to $\alpha(t) + d \alpha(t)$. In
-other words, we expect $\frac{\diff\alpha(t)}{\diff t}$ to be a vector on $M$
-tangent to the curve $\alpha(t)$. At the moment, howoever, we have no notion of
+expect that $\alpha(t)$ moves infinitesimally to $\alpha(t) + \diff \alpha(t)$. 
+In other words, we expect $\frac{\diff\alpha(t)}{\diff t}$ to be a vector on $M$
+tangent to the curve $\alpha(t)$. At the moment, however, we have no notion of
 such a thing as a vector, which with we could describe dynamics, on a manifold $M$.
 The purpose of this section is to remedy this.
 
@@ -485,7 +484,7 @@ $\phi \in \mathcal C^\infty(M)$, and we can reconstruct the point from these
 values as the map $p \mapsto p^*$
 is injective. Assume that we already have the notion of a vector $v$ at a point $p$.
 It would assign a change of values along $v$, a derivative, written $v \cdot \phi$, to each
-function $f$. Thus such a vector would give rise to a function
+function $\phi$. Thus such a vector would give rise to a function
 \[
   v\colon \mathcal C^\infty(M) \to \set R, \phi \mapsto v \cdot \phi.
 \]
@@ -612,14 +611,14 @@ The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
       = a_j
     \end{split}
   \]
-  for all $i = 1$, \dots, $n$.
+  for all $j = 1$, \dots, $n$.
   
   To show that the $n$ vectors defined by \prettyref{eq:coordinate_basis} span
   the tangent space $\mathrm T_p M$ at $p$, let $\phi$ be any function on $M$. By
   \prettyref{thm:hadamard}, there exist functions $g_1$, \dots, $g_n$ defined
   in a neighborhood of $p$ in $U$ such that
   \[
-    \phi = \phi(p) + \sum_{i = 1}^n (x_i - x_i(p)) \, g_i(u)
+    \phi = \phi(p) + \sum_{i = 1}^n (x_i - x_i(p)) \, g_i
   \]
   in a neighborhood of $p$ in $\set R^n$. Given any vector $v \in
   \mathrm T_p M$, we thus have
@@ -633,7 +632,7 @@ The basis $(\frac{\partial}{\partial x_i}|_p)_i$ is called the
   In other words, $v \cdot \phi = \sum_{j = 1}^n (v \cdot x_j) \, \frac\partial{\partial x_j}|_p \cdot \phi$
   for any vector $v \in \mathrm T_p M$. Thus
   \[
-    \forall v \in \mathrm T_p M: v = \sum_{i = 1}^n (v \cdot x_j) \, \frac\partial{\partial x_i}|_p,
+    \forall v \in \mathrm T_p M: v = \sum_{i = 1}^n (v \cdot x_i) \, \frac\partial{\partial x_i}|_p,
   \] 
   which is a linear combination of the induced basis.
   
@@ -674,7 +673,7 @@ $v \in \mathrm T_p M$. The map
 \]
 fulfills the linearity and constant axioms and a Leibniz rule as follows
 \[
-  (f_* v) \cdot (\psi \, \psi') = (v \cdot \phi) \, \psi(f(p)) +
+  (f_* v) \cdot (\phi \, \psi) = (v \cdot \phi) \, \psi(f(p)) +
     \phi(f(p)) \, (v \cdot \psi).
 \]
 In other words, $f_* v$ defines a vector at $f(p)$ defined by the equation
@@ -786,7 +785,7 @@ $\mathrm T^*_p M$ dual to the basis $\frac{\partial}{\partial x_1}|_p$, \dots,
 $\frac{\partial}{\partial x_n}|_p$ of $\mathrm T_p M$, that is
 \[
   \forall i, j \in \Set{1, \dotsc, n}:
-  \diff_p x_i(\frac{\partial}{\partial x_i}|_p) = \updelta_{ij}.
+  \diff_p x_i(\frac{\partial}{\partial x_j}|_p) = \updelta_{ij}.
 \]
 
 Besides scalars, vectors and covectors (linear forms), there are even more
@@ -890,12 +889,12 @@ More generally, any $(k + \ell - 1)$-linear map of the form
 induces a $(k + \ell)$-linear map
 \[
   \begin{aligned}
-    L^*\colon & (\mathrm T_p^* M)^k \times (\mathrm T_p M)^\ell \to \mathrm T_p M, \\
+    L^*\colon & (\mathrm T_p^* M)^k \times (\mathrm T_p M)^\ell \to \set R, \\
     & (\alpha_0, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell) \mapsto
     \alpha_0(L(\alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell),
   \end{aligned}
 \]
-that is a tensor if type $(k, \ell)$, and $L$ can be recovered by the formula
+that is a tensor of type $(k, \ell)$, and $L$ can be recovered by the formula
 \[
   L(\alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc, v_\ell)
   = \sum_{i = 1}^n L^*(\theta_i, \alpha_1, \dotsc, \alpha_{k - 1}, v_1, \dotsc,
@@ -1039,7 +1038,7 @@ the following theorem:
     \label{eq:ode}
     y'(t) & = f(y(t)), & y(t_0) & = x(p_0).
   \end{align}
-  By the Picard-Lindelöf theorem, this ordinary differential equation has
+  By the Picard-Lindel\"of theorem, this ordinary differential equation has
   locally a unique solution for every initial value. Thus also $\alpha$ exists
   locally and is locally unique. 
 
@@ -1085,7 +1084,7 @@ the following theorem:
   we define $D^\infty$ as the set of all pairs $(t, p)$ such that
   there exists an $U \in \mathfrak U^0(p, M)$ and an $\epsilon \in \set R_+$
   such that $U_\epsilon(t) \times U \subseteq D$ and
-  such that $\Phi|U_\epsilon \times U\colon U_\epsilon \times U \to M$
+  such that $\Phi|U_\epsilon(t) \times U\colon U_\epsilon(t) \times U \to M$
   is a morphism. By definition, $D^\infty$ is open and $\Phi|D^\infty$ is
   a morphism. We claim that $\Set 0 \times M \subseteq D^\infty$: For $p_0
   \in M$ choose a chart $(U, x) \in \mathfrak U^\infty(p_0, M)$ and repeat
@@ -1122,9 +1121,9 @@ the following theorem:
   \cap \set R_+$. This means $p \in D_t$. The choice of $p$ was arbitrary, so
   $M = \bigcup_{t \in \set R_+} D_t$.
   
-  Let $t$, $s \in \set R$, $p \in D_s$. With $q \coloneqq \Phi_s(p)$ one have
+  Let $t$, $s \in \set R$, $p \in D_s$. With $q \coloneqq \Phi_s(p)$ one has
   \[
-    q \in D_t \iff t \in J_q = -s + J_p \iff t + s \in J_p \in p \in D_{t + s}.
+    q \in D_t \iff t \in J_q = -s + J_p \iff t + s \in J_p \iff p \in D_{t + s}.
   \]
   And for $q \in D_t$, that is $t \in J_q$, one has
   \[
@@ -1132,7 +1131,7 @@ the following theorem:
     = \Phi_{t + s}(p).
   \]
   
-  The last set-theortic property stated in that paragraph and that remains to
+  The last set-theoretic property stated in that paragraph and that remains to
   be shown is that $\Phi_t$ induces a bijection from $D_t$ onto $D_{-t}$. This
   follows from the preceding by setting $s \coloneqq -t$: It is
   $D_{-t} \subseteq M = D_0$ and thus $\Phi_{-t}(p) \in D_t$ and $\Phi_t
@@ -1288,7 +1287,7 @@ the following theorem:
   Let $f\colon M \to N$ be a morphism between manifolds and $p \in M$ a point.
   Prove that
   \[
-    f_* v\colon \mathcal C^\infty(N) \to \mathcal C^\infty(N),
+    f_* v\colon \mathcal C^\infty(N) \to \mathcal \set R,
     \psi \mapsto v \cdot (\psi \circ f)
   \]
   in fact defines a vector at $f(p)$.
@@ -1316,7 +1315,7 @@ the following theorem:
   \[
     \begin{aligned}
       \forall v \in \Tang_p M: &&
-      (\id_M)_* v & v, &
+      (\id_M)_* v & = v, &
       (g \circ f)_* v & = g_* (f_* v),
     \end{aligned}
   \]
