@@ -38,7 +38,7 @@ is an \emph{open neighborhood}. The set of open neighborhoods of $p$ is
 denoted by $\mathfrak U^0(p, X)$. A subset $U$ of the underlying set of the
 topological space $X$ is open if and only if it is a neighborhood of every point
 $p \in U$. A \emph{neighborhood of a subset $A$ of $X$} is a subset $G$ that is
-a neigborhood of every point $p \in A$. The set of neighborhoods of $A$ is denoted
+a neighborhood of every point $p \in A$. The set of neighborhoods of $A$ is denoted
 by $\mathfrak U(A, X)$.
 
 An \emph{closed subset $Z \subseteq X$ of $X$} is a subset of the underlying
@@ -46,12 +46,12 @@ set of $X$ such that its complement $X \setminus Z$ is open. Let $Y$ be an
 arbitrary subset of $X$. The \emph{closure $\overline Y$ of $Y$ in $X$} is the
 smallest closed subset of $X$ containing $Y$, that is
 \begin{equation}
-  \overline Y = \bigcap_{\text{$Y \subseteq Z \subseteq X$ is a closed subset}} Z
+  \overline Y = \bigcap_{\text{$Y \subseteq Z \subseteq X$ is a closed subset}} Z.
 \end{equation}
 
 Let $Y$ be any subset of the underlying set of $X$. Set
 \[
-  \mathfrak U^0(Y) \coloneqq \Set{Y \cap U: U \in \mathfrak U^0(X)}
+  \mathfrak U^0(Y) \coloneqq \Set{Y \cap U: U \in \mathfrak U^0(X)}.
 \]
 This is a topology, the \emph{subspace topology}. Endowed with this topology,
 $Y$ canonically becomes a topological space itself. Topological spaces of this form
@@ -64,7 +64,7 @@ topology defined by
 \begin{equation}
   \label{eq:cartesian_topology}
   \mathfrak U^0(\set R^n) = \Set{U \subseteq \set R^n : \forall p \in U \,
-  \exists \epsilon \in \set R^+: U_\epsilon(p) \subseteq U},
+  \exists \epsilon \in \set R_+: U_\epsilon(p) \subseteq U},
 \end{equation}
 where
 \[
@@ -73,7 +73,7 @@ where
 for an $\epsilon > 0$ is the standard \emph{$\epsilon$-neighborhood}. Its 
 closure under the so-defined topology is given by
 \[
-  \overline U_{\epsilon(p)} = B_\epsilon(p) \coloneqq
+  \overline{U_\epsilon(p)} = B_\epsilon(p) \coloneqq
   \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
 \]
 
@@ -291,7 +291,7 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
   Show that the closure of a standard $\epsilon$-neighborhood in $\set R^n$
   for the canonical topology is given by
   \begin{equation}
-    \overline U_{\epsilon(p)} = \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
+    \overline{U_\epsilon(p)} = \Set{q \in \set R^n : \norm {q - p} \leq \epsilon}.
   \end{equation}
 \end{xca}
 

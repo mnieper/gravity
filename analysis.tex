@@ -22,7 +22,7 @@ A subset $U$ of $n$-dimensional Euclidean space $\set R^n$ is \emph{star-shaped 
 respect to a point $p \in U$} if
 \[
   \forall x \in U \forall 0 \leq t \leq 1 :
-  (1 - t) \, a + t \, x \in U.
+  (1 - t) \, p + t \, x \in U.
 \]
 Any neighborhood of a point $p \in \set R^n$ contains an open neighborhood
 star-shaped with respect to the point $p$ as the standard $\epsilon$-neighborhoods
@@ -43,7 +43,7 @@ of their interior).
 
 Let $p_0 \in \set R^n$ be a point in Euclidean space and
 $G \in \mathfrak U^0(p_0, \set R^n)$ an open subset. Let $f\colon G \to \set R^n$
-be a smooth functions.
+be a smooth function.
 
 \begin{thm}[Existence theorem for smooth local flows]
   \label{thm:diff_flow}
@@ -55,7 +55,7 @@ be a smooth functions.
   \]
   solve the initial value problem
   \begin{align*}
-    (\Psi^p)' & = X \circ \Psi^p, &
+    (\Psi^p)' & = f \circ \Psi^p, &
     \Psi^p(0) & = 0
   \end{align*}
   for each $p \in U$.
