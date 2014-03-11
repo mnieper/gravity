@@ -140,6 +140,25 @@ space into a Hausdorff space. Then
 \]
 is a closed subset of $X$.
 
+\section{Connected spaces}
+
+\begin{dfn}
+  A topological space $X$ is \emph{connected} if
+  \[
+    X = \coprod_{i \in I} X_i \implies \exists i \in I: X = X_i
+  \]
+  whenever $(X_i)_{i \in I}$ is a family of open subsets of $X$.
+\end{dfn}
+
+Note that the empty set $\emptyset$ viewed as a topological space is never
+connected: it is the empty disjoint union of no open subspace, so there exists
+no $i \in I$ with $\emptyset = X_i$.
+
+To show that a subset $Y$ of a connected space $X$ is all of $X$, it is enough
+to show that $Y$ is non-empty and both an open and closed subset of $X$.
+
+A subspace of $\set R$ is connected if and only it is a non-empty interval.
+
 \section{Normal spaces}
 
 \begin{dfn}
@@ -159,10 +178,6 @@ many $i \in I$ with $G \cap U_i \neq \emptyset$.
     \forall i \in I : V_i \subseteq \overline{V_i} \subseteq U_i.
   \]
 \end{thm}
-
-% \section{Connected spaces}
-
-% A subspace of $\set R$ is connected if and only it is an interval.
 
 \section{Compact spaces}
 \label{sec:compact}
@@ -296,6 +311,17 @@ Cartesian space $\set R^n$ is an example of a paracompact Hausdorff space.
   Let $X$ and $Y$ be two topological spaces. Show that the two projection maps
   $\pr_1$ and $\pr_2$ defined on the topological product $X \times Y$ are
   continuous.
+\end{xca}
+
+\begin{xca}
+  Let $X$ be a connected topological space and $\emptyset \neq Y \subseteq X$
+  a non-empty subset. Assume that $Y$ is both open and closed in $X$. Show that
+  $Y = X$.
+\end{xca}
+
+\begin{xca}
+  Prove that the connected subspaces of $\set R$ are exactly the non-empty
+  intervals.
 \end{xca}
 
 \begin{xca}
